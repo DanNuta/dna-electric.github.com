@@ -6,7 +6,7 @@ export const GlobalStyles = createGlobalStyle`
 *{
     margin: 0;
     padding: 0:
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 li{
@@ -17,7 +17,4 @@ a{
     text-decoration: none
 }
 
-h1
-
-
-`
+`;

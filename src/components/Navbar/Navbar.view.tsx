@@ -1,51 +1,57 @@
-import React, {PropsWithChildren} from "react";
+import React, { PropsWithChildren } from "react";
 import { NavbarType } from "../../models/navbar.model";
 import { facebookIcon } from "../../icons/custom";
 import Logo from "../../icons/logo/logo.png";
 import Wishlist from "../../icons/card_product_icon/wish_list.svg";
 import Youtube from "../../icons/social_media_icon/youtube.svg";
-import * as  Styled from "./Navbar.module";
+import * as Styled from "./Navbar.module";
 import hanburgher from "../../icons/hamburger/menu.png";
-import {VButton} from "../../components/VButton/VButton";
-import wishList from "../../icons/card_product_icon/wish_list.svg"
-
-
+import { VButton } from "../../components/VButton/VButton";
+import wishList from "../../icons/card_product_icon/wish_list.svg";
 
 type Props = {
-    data: NavbarType,
-    toggle: () => void,
-    bg: string
-}
+  data: NavbarType;
+  toggleState: boolean;
+  toggle: () => void;
+  bg: string;
+};
+
+export const NavbarView: React.FC<PropsWithChildren<Props>> = ( props: PropsWithChildren<Props>) => {
+  console.log(props);
+  return (
+
+    <Styled.NavbarNav bg={props.bg}>
+
+      <Styled.NavbarUl>
+
+        <Styled.NavLi type="center">
+
+          <a href="/">
+            <img src={Logo} />
+          </a>
+        </Styled.NavLi> //
+
+      </Styled.NavbarUl>  
 
 
+      <Styled.NavbarUl>
 
+        <Styled.NavLi>
 
-export const NavbarView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) => {
+          <VButton onClick={props.toggle}>
+            <img src={hanburgher} alt="" />
+          </VButton>
 
+        </Styled.NavLi>
 
+        <Styled.NavLi>9:00 - 19:00</Styled.NavLi>
 
-   console.log(props)
-   
-    return  (
+        <Styled.NavLi>
+          <img src={wishList}></img>
+        </Styled.NavLi>
+      </Styled.NavbarUl>
 
-          <Styled.NavbarNav bg={props.bg}>
-
-
-            <Styled.NavbarUl>
-               <Styled.NavLi><a href="/"><img src={Logo}/></a></Styled.NavLi>
-            </Styled.NavbarUl>
-
-               <Styled.NavbarUl>
-                  <Styled.NavLi><VButton><img src={hanburgher} alt="" /></VButton></Styled.NavLi>
-                  <Styled.NavLi>9:00 - 19:00</Styled.NavLi>
-                  <Styled.NavLi><img src={wishList}></img></Styled.NavLi>
-               </Styled.NavbarUl>
-
-                
-               
-
-
-               {/* <Styled.NavMobile>
+      {/* <Styled.NavMobile>
                   <VButton  bg="red" onClick={props.toggle} > <img src={Navbar} /> </VButton>
                   <li>9:00 - 19:00</li>
                   <li><img src={Wishlist} alt="wish_list" /></li>
@@ -67,11 +73,6 @@ export const NavbarView: React.FC<PropsWithChildren<Props>> = (props: PropsWithC
                  <li><a href={props.data.Link_youtube} ><img src={Youtube} alt="youtube" /></a></li>
                  <li><img src={Wishlist} alt="wish_list" /></li>
                </ul> */}
-
-             </Styled.NavbarNav>
-    )
-
-
-
-            
-}
+    </Styled.NavbarNav>
+  );
+};

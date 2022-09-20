@@ -6,15 +6,11 @@ type Props = {
   bg?: string;
 };
 
-export const VButton: React.FC<React.PropsWithChildren<Props>> = (props: React.PropsWithChildren<Props>) =>{
-    const [toggleState, setToggleState] = useState<boolean>(false);
-
-  const toggleBtnFn = () => {
-    console.log("click")
-  };
-
+export const VButton: React.FC<React.PropsWithChildren<Props>> = (
+  props: React.PropsWithChildren<Props>
+) => {
   return (
-    <VButtonView style={props.bg}  toggle={toggleBtnFn}>
+    <VButtonView style={props.bg} toggle={props.onClick}>
       {props.children}
     </VButtonView>
   );
