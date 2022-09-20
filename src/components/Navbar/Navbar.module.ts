@@ -26,7 +26,7 @@ export const NavbarUl = styled.ul`
 
 export const NavLi = styled.li<Props>`
  // text-align: ${(props) => props.type === "center" ? "center" : ""};
-  display: flex;
+  display: block;
   justify-content: ${(props) => props.type === "center" ? 'center'  : ""};
   width: ${(props) => props.type === "center" ? "100%" : 0};
 `;
