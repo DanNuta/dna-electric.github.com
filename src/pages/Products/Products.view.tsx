@@ -12,6 +12,7 @@ import {VCardItem} from '../../components/VCardItem/VCardItem';
 import like from "../../icons/calitate/like.svg";
 import calitate from "../../icons/calitate/calitate.svg";
 import garantie from "../../icons/calitate/garantie.svg";
+import {Wishlist} from "../../models/WislistContext.model";
 
 
 
@@ -28,7 +29,7 @@ type Props = {
 export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    const {wishlistState ,setWishListState} = useContext(WishlistContext);
+    const {wishlistState} = useContext(WishlistContext) as Wishlist;
 
  
 
@@ -50,7 +51,7 @@ export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
                 <h1 className="title">{props.data?.title}</h1>
 
             <Style.ImgSlider>
-                <img src={props.data && props?.data?.img?.[props.contor]} alt="" />
+                <img src={props.data && props?.data?.img?.[props.contor]}/>
 
                 <div className="btn">
                     <button onClick={props.prev} className="prev">prev</button>
@@ -74,7 +75,7 @@ export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
 
                     <ul>
                         <li><img src={shop} alt="shop"/>Adauga in cos</li>
-                        <li onClick={() => props.wishlist(props.data)}><img src={checkItExist ? wishlistHover : wishlist} alt="wishlist" />Adauga in la favorite</li>
+                        <li onClick={() => props.wishlist?.(props.data)}><img src={checkItExist ? wishlistHover : wishlist} alt="wishlist" />Adauga in la favorite</li>
                     </ul>
 
                 </Style.ContactShoWishlistDiv>

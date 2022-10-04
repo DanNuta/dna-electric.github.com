@@ -6,13 +6,15 @@ import { db } from "../../firebase/config";
 import { ThemeConsumer } from "styled-components";
 import {WishlistContext} from "../../context/Context.wishlist";
 import {dataProductModel} from "../../models/dataProduct.model";
+import {Wishlist} from "../../models/WislistContext.model";
 
 
 export const Products: React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{
 
     const {id} = useParams();
 
-    const {wishlistState ,setWishListState} = useContext(WishlistContext);
+    const {addWishList} = useContext(WishlistContext) as Wishlist;
+
     const [dateState, setDataState] = useState<dataProductModel>();
 
     const [isPendingState, setIsPendingState] = useState<boolean | null>(null);
@@ -95,24 +97,7 @@ export const Products: React.FC<PropsWithChildren> = (props: PropsWithChildren) 
     }
 
 
-    const wishlist = (item: dataProductModel) =>{
-
-        const findIndex = wishlistState.findIndex((element: dataProductModel) => element.id === item.id);
-  
-       findIndex ? 
-        setWishListState((prevState: dataProductModel[])  =>{
-  
-              return [...prevState, {...item}];
-        })
-        :
-  
-        setWishListState((prevState: dataProductModel[])  =>{
-  
-          let newArray = prevState.filter(el => el.id !== item.id)
-  
-          return newArray;
-    })
-}
+   
 
 
 
@@ -126,8 +111,6 @@ useEffect(() =>{
         return prev = localData;
       })
 
-
-
     }catch(e){
       console.log(e)
     }
@@ -136,6 +119,6 @@ useEffect(() =>{
 
 
 
-    return <ProductsView produseSimilare={localStoregeDataState && localStoregeDataState} wishlist={wishlist} prev={prevImg} contor={contorState} next={nextImg} data={dateState} isPending={isPendingState}>{props.children}</ProductsView>
+    return <ProductsView produseSimilare={localStoregeDataState && localStoregeDataState} wishlist={addWishList} prev={prevImg} contor={contorState} next={nextImg} data={dateState} isPending={isPendingState}>{props.children}</ProductsView>
 
 }

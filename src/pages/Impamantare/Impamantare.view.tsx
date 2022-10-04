@@ -24,15 +24,6 @@ type Props = {
 export const ImpamantareView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    const {id} = useParams();
-    const location = useLocation()
-
-    console.log(props)
-
-    //const localData = JSON.parse(localStorage.getItem("impamantareData") || "");
-    //const filterElement = localData.map((item: dataProductModel) => item.categoria);
-
-
 
     return (
         <Styled.ProductsDiv>

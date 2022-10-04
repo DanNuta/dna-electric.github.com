@@ -6,6 +6,7 @@ import {Link, useLocation } from "react-router-dom";
 import wishlistHover from "../../icons/card_product_icon/wishlistHover.svg";
 import {WishlistContext} from "../../context/Context.wishlist";
 import shop from "../../icons/card_product_icon/shop.svg";
+import {Wishlist} from "../../models/WislistContext.model";
 
 
 
@@ -18,7 +19,7 @@ type Props = {
 export const VCardItemView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
     
-    const {wishlistState} = useContext(WishlistContext);
+    const {wishlistState} = useContext(WishlistContext) as Wishlist;
 
  
 
@@ -39,7 +40,7 @@ export const VCardItemView: React.FC<PropsWithChildren<Props>> = (props: PropsWi
 
             <div className="action_btn">
                  <span><img src={shop} alt="shop" /></span>
-                <span onClick={() => props.onClick(props.data)}><img src={checkItExist ? wishlistHover : wishlist} alt="wishlist" /></span>
+                <span onClick={() => props.onClick?.(props.data)}><img src={checkItExist ? wishlistHover : wishlist} alt="wishlist" /></span>
             </div>
         </Style.VCardItemDiv>
     )

@@ -11,7 +11,7 @@ import {Wishlist} from "../../models/WislistContext.model";
 export const Impamantare: React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{
 
 
-  const {wishlistState, setWishListState} = useContext(WishlistContext) as Wishlist;
+  const {wishlistState, addWishList} = useContext(WishlistContext) as Wishlist;
 
     const [dateState, setDataState] = useState<dataProductModel[]>([]);
     const [isPendingState, setIsPendingState] = useState<boolean | null>(null);
@@ -75,53 +75,19 @@ export const Impamantare: React.FC<PropsWithChildren> = (props: PropsWithChildre
     }, [localStorage.getItem("impamantareData")])
 
 
-
-
-
-    const addWishList = (item: dataProductModel) =>{
-      const findIndex = wishlistState.findIndex((element: dataProductModel) => element.id === item.id);
-
-     findIndex ? 
-      setWishListState((prevState: dataProductModel[])  =>{
-
-            return [...prevState, {...item}];
-      })
-      :
-
-      setWishListState((prevState: dataProductModel[])  =>{
-
-        let newArray = prevState.filter(el => el.id !== item.id)
-
-        return newArray;
-  })
-    }
-
-
-
-
     const filterFn = () =>{
       setFilterActiveState(prev => !prev);
-
     }
 
 
 
     const filterItemFn = (category: string) =>{
 
-      
-
      const newFilter = localStoregeDataState.filter((item: dataProductModel) => item.categoria === category);
-      setDataState(prev =>{ return newFilter})
-      setFilterActiveState(prev => !prev)
+
+      setDataState(prev => { return newFilter});
+      setFilterActiveState(prev => !prev);
     }
-
-
-
-   
-
-
-
-
 
     return <ImpamantareView filterActive={dateState.find(item => item.categoria)} localStoregeDataState={localStoregeDataState.map(item => item.categoria)} filterItemFn={filterItemFn} filterActiveState={filterActiveState} filterFn={filterFn} onClick={addWishList} data={dateState} isPending={isPendingState}>
         {props.children}
