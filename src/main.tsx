@@ -1,16 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter} from "react-router-dom";
+import {NavbarProvider} from "./context/Context.navbar";
+import {WislistContext} from "./context/Context.wishlist";
 
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
-  <BrowserRouter>
-      <App />
-  </BrowserRouter>
+
+      <WislistContext>
+            <NavbarProvider>
+                  <App />
+            </NavbarProvider>
+      </WislistContext>
+  
+  
 
   
 )

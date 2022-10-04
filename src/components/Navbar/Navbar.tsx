@@ -12,45 +12,31 @@ type Props = {
   bg: string;
 };
 
-export const Navbar: React.FC<PropsWithChildren<Props>> = (
-  props: PropsWithChildren<Props>
-) => {
-  const [data, setData] = useState<NavbarType>({
-    Despre: "",
-    Produse: "",
-    Link_facebook: "",
-    Link_youtube: "",
-    Nr_telefon: "",
-    Servicii: "",
-  });
+export const Navbar: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) => {
+ 
 
   const [toggleState, setToggleState] = useState<boolean>(false);
+  const [wishlistToggle, setWishList] = useState<boolean>(false)
 
-  useEffect(() => {
-    const ref = collection(db, "Navbar");
-
-    const onSubscribe = onSnapshot(ref, (snapshopt) => {
-      //let navbar: NavbarType = ;
-
-      snapshopt.docs.forEach((item) => {
-        setData(item.data());
-      });
-    });
-
-    return () => {
-      onSubscribe();
-    };
-  }, []);
-
+  
   const checkToggleFn = () => {
     setToggleState((prev) => !prev);
   };
+
+
+  const wishlist = () =>{
+
+      setWishList(prev => !prev)
+  }
+
+
   return (
     <NavbarView
       bg={props.bg}
-      toggleState={toggleState}
-      data={data}
+      toggleState={toggleState}  
       toggle={checkToggleFn}
+      onClick={wishlist}
+      wishlist={wishlistToggle}
     >
       {props.children}
     </NavbarView>
