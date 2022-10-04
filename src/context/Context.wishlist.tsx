@@ -7,7 +7,8 @@ export const WishlistContext = createContext<dataProductModel | null>(null);
 
 export const WislistContext: React.FC<PropsWithChildren<dataProductModel>> = (props: PropsWithChildren<dataProductModel>) =>{
 
-    const [wishlistState, setWishListState] = useState<dataProductModel[]>([])
+    const [wishlistState, setWishListState] = useState<dataProductModel[] | null>(null);
+
 
     return <WishlistContext.Provider value={{wishlistState, setWishListState}}>
               {props.children}
