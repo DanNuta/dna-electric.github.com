@@ -4,13 +4,14 @@ import {dataProductModel} from "../../models/dataProduct.model";
 import { collection, FirestoreError, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import {WishlistContext} from "../../context/Context.wishlist";
+import {Wishlist} from "../../models/WislistContext.model";
 
 
 
 export const Impamantare: React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{
 
 
-  const {wishlistState ,setWishListState} = useContext(WishlistContext);
+  const {wishlistState, setWishListState} = useContext(WishlistContext) as Wishlist;
 
     const [dateState, setDataState] = useState<dataProductModel[]>([]);
     const [isPendingState, setIsPendingState] = useState<boolean | null>(null);
@@ -93,17 +94,6 @@ export const Impamantare: React.FC<PropsWithChildren> = (props: PropsWithChildre
 
         return newArray;
   })
-
-
-  console.log(findIndex)
-
-
-
-
-
-      
-
-
     }
 
 
