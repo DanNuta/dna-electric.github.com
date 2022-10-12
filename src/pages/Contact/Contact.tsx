@@ -10,7 +10,6 @@ type State = {
     msj: string,
     value: string,
     css: string;
-
 }
 
 export const Contact: React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{

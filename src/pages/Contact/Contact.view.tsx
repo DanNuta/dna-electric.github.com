@@ -39,8 +39,10 @@ export const ContactViwe: React.FC<PropsWithChildren<Props>> = (props: PropsWith
             <h1>Contact</h1>
             <p>Simțiți-vă liber să ne contactați oricând. Vom reveni cu un mesaj cât mai curând posibil!</p>
 
+            {/* (e: Event, form: HTMLFormElement) => props.contact(e, form) */}
 
-            <Style.FormElement ref={form}  onSubmit={(e: React.FormEvent, form: HTMLFormElement) => props.contact(e, form)}>
+
+            <Style.FormElement ref={form}  onSubmit={() => {console.log("salut")}}>
 
                 <Style.ElementInput >
                     <h1>Trimite-ne un mesaj</h1>
