@@ -26,7 +26,7 @@ type Props = {
 
 export const ContactViwe: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
-    const form = useRef<HTMLFormElement>(null!);
+    const form = useRef<HTMLFormElement>(null);
 
     
 
@@ -40,7 +40,7 @@ export const ContactViwe: React.FC<PropsWithChildren<Props>> = (props: PropsWith
             <p>Simțiți-vă liber să ne contactați oricând. Vom reveni cu un mesaj cât mai curând posibil!</p>
 
 
-            <Style.FormElement ref={form}  onSubmit={(e: Event, form: HTMLFormElement) => props.contact(e, form)}>
+            <Style.FormElement ref={form}  onSubmit={(e: React.FormEvent, form: HTMLFormElement) => props.contact(e, form)}>
 
                 <Style.ElementInput >
                     <h1>Trimite-ne un mesaj</h1>

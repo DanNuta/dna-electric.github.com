@@ -29,8 +29,6 @@ type Props = {
 export const NavbarView: React.FC<PropsWithChildren<Props>> = ( props: PropsWithChildren<Props>) => {
   
 
-  console.log(props.data)
-
   const {wishlistState} = useContext(WishlistContext) as Wishlist;
   const checkProducts = wishlistState.length == 0 ? false : true;
 
@@ -72,7 +70,7 @@ export const NavbarView: React.FC<PropsWithChildren<Props>> = ( props: PropsWith
       <Styled.TabletNav display="block" bg={props.bg}>
 
                <Styled.TabletUl gap='1rem'>
-                  <li><img src={Logo} alt="wish_list" /></li>
+                  <li><Link to="/"><img src={Logo} alt="wish_list"/> </Link> </li>
                   <li>9:00 - 19:00</li>
                </Styled.TabletUl>
 
