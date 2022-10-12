@@ -7,7 +7,7 @@ type Props = {
     type?: string,
     bg?: string,
     state?: string,
-    active?: string,
+    toggle?: boolean,
     display?: string,
     height?: string,
     alignItems?: string,
@@ -75,7 +75,7 @@ left: 0;
 backdrop-filter: blur(10px);
 background-color: rgba(39, 39, 39, 0.6);
 z-index: 999;
-transform: ${props => props.active ? "translateX(-100%)" : "ranslateX(0)"};
+transform: ${props => props.toggle ? "translateX(-100%)" : "ranslateX(0)"};
 transition: .5s;
 
 ${theme.breakpoints.up("lg")}{

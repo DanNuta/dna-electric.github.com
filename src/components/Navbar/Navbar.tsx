@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useContext } from "react";
 
 import { NavbarView } from "./Navbar.view";
 
@@ -8,16 +8,21 @@ import { NavbarType } from "../../models/navbar.model";
 import { collection, FirestoreError, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/config";
 
+import {NavbarContext} from "../../context/Context.navbar";
+
 type Props = {
   bg: string;
-  data: NavbarType
 };
 
 export const Navbar: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) => {
  
 
   const [toggleState, setToggleState] = useState<boolean>(false);
-  const [wishlistToggle, setWishList] = useState<boolean>(false)
+  const [wishlistToggle, setWishList] = useState<boolean>(false);
+
+  const NavbarEle = useContext(NavbarContext) as NavbarType;
+
+
 
   
   const checkToggleFn = () => {
@@ -37,7 +42,7 @@ export const Navbar: React.FC<PropsWithChildren<Props>> = (props: PropsWithChild
       toggle={checkToggleFn}
       onClick={wishlist}
       wishlist={wishlistToggle}
-      data={props.data}
+      data={NavbarEle}
     >
       {props.children}
     </NavbarView>

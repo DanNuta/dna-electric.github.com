@@ -27,6 +27,8 @@ type Props = {
 };
 
 export const NavbarView: React.FC<PropsWithChildren<Props>> = ( props: PropsWithChildren<Props>) => {
+
+  
   
 
   const {wishlistState} = useContext(WishlistContext) as Wishlist;
@@ -95,7 +97,7 @@ export const NavbarView: React.FC<PropsWithChildren<Props>> = ( props: PropsWith
     </Styled.TabletNav>
 
 
-    {<Styled.MobileNavDiv active={props.toggleState && "active"}><MobileResponsive stateCkeck={props.toggleState} toggle={props.toggle}/></Styled.MobileNavDiv>}
+    {<Styled.MobileNavDiv toggle={props.toggleState}><MobileResponsive stateCkeck={props.toggleState} toggle={props.toggle}/></Styled.MobileNavDiv>}
 
 
        {(checkProducts && <WishlistEl wishListToggle={props.wishlist} onClick={props.onClick}/>)}

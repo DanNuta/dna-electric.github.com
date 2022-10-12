@@ -4,7 +4,7 @@ import * as Style from "./VLink.model";
 
 
 type Props = {
-    link?: string,
+    link: string,
     bg?: string,
     color?: string,
     onClick?: () => void

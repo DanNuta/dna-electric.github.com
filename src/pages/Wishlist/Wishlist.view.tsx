@@ -20,7 +20,7 @@ export const WishlistView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
     const {wishlistState} = useContext(WishlistContext) as Wishlist;
 
 
-    return <Style.WishListDiv active={props.wishListToggle && "active"}>
+    return <Style.WishListDiv active={props.wishListToggle}>
         
             <div className="btn_delete_wishlist">
                     <h1>Preferinte</h1>

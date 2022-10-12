@@ -7,12 +7,9 @@ export const WishlistContext = createContext<Wishlist | null>(null);
 
 
 
-
-
-export const WislistContext: React.FC<PropsWithChildren<dataProductModel>> = ({children}) =>{
+export const WislistContext: React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{
 
     const [wishlistState, setWishListState] = useState<dataProductModel[]>([]);
-
 
 
 
@@ -51,7 +48,7 @@ export const WislistContext: React.FC<PropsWithChildren<dataProductModel>> = ({c
   }
 
     return <WishlistContext.Provider value={{wishlistState, addWishList, deleteItem, deleteAll}}>
-              {children}
+              {props.children}
           </WishlistContext.Provider>
 }
 

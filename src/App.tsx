@@ -33,7 +33,7 @@ function App(){
     <ScrollToTop>
     <>
 
-      <Navbar data={contextNav} bg="#272727"/>
+      <Navbar bg="#272727"/>
 
       <GlobalStyles/>
 

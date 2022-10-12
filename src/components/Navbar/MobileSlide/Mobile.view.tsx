@@ -7,6 +7,7 @@ import youtube from "../../../icons/social_media_icon/youtube.svg";
 import wishlist from "../../../icons/social_media_icon/wish_list.svg";
 import {NavbarContext} from "../../../context/Context.navbar";
 import {Link} from "react-router-dom";
+import { NavbarType } from "../../../models/navbar.model";
 
 
 
@@ -19,7 +20,7 @@ type Props = {
 export const MobileResponsiveView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    const contectNav = useContext(NavbarContext)
+    const contectNav = useContext(NavbarContext) as NavbarType;
 
     return (
 
@@ -32,11 +33,11 @@ export const MobileResponsiveView: React.FC<PropsWithChildren<Props>> = (props: 
 
             <Style.MolobleUl>
                 <Style.MobileLiElement  onClick={props.toggle}><Link to="/">{contectNav?.Despre}</Link></Style.MobileLiElement>
-                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.impamantare}>{contectNav?.impamantare}</Link></Style.MobileLiElement>
-                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.paratrasnet}>{contectNav?.paratrasnet}</Link></Style.MobileLiElement>
-                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.supratensiune}>{contectNav?.supratensiune}</Link></Style.MobileLiElement>
-                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.articole}>{contectNav?.articole}</Link></Style.MobileLiElement>
-                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.contacte}>{contectNav?.contacte}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav.impamantare}>{contectNav.impamantare}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav.paratrasnet}>{contectNav.paratrasnet}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav.supratensiune}>{contectNav.supratensiune}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav.articole}>{contectNav.articole}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav.contacte}>{contectNav.contacte}</Link></Style.MobileLiElement>
             </Style.MolobleUl>
 
 

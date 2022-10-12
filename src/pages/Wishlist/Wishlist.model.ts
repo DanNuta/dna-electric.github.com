@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 type Props = {
-    active?: string
+    active?: boolean
 }
 
 export const WishListDiv = styled.div<Props>`

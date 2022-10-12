@@ -1,4 +1,4 @@
-import React, {PropsWithChildren, useContext, useRef, useState} from "react";
+import React, {FormEvent, PropsWithChildren, useContext, useRef, useState} from "react";
 import * as Style from "./Contact.model"
 import { VImput } from "../../components/VInput/VInput";
 import { VButton } from "../../components/VButton/VButton";
@@ -20,13 +20,13 @@ type Props = {
     emailState: StateFormModel,
     telState: StateFormModel,
     msjState: StateFormModel,
-    contact: (e:  Event, form: HTMLFormElement) => void,
+    contact: (e:  React.FormEvent, form: HTMLFormElement) => void,
     isPendingState: boolean | null;
 }
 
 export const ContactViwe: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
-    const form = useRef<HTMLFormElement>(null);
+    const form = useRef<HTMLFormElement>(null)
 
     
 
@@ -39,10 +39,8 @@ export const ContactViwe: React.FC<PropsWithChildren<Props>> = (props: PropsWith
             <h1>Contact</h1>
             <p>Simțiți-vă liber să ne contactați oricând. Vom reveni cu un mesaj cât mai curând posibil!</p>
 
-            {/* (e: Event, form: HTMLFormElement) => props.contact(e, form) */}
 
-
-            <Style.FormElement ref={form}  onSubmit={() => {console.log("salut")}}>
+            <Style.FormElement ref={form}  onSubmit={(e: React.FormEvent, form: HTMLFormElement) => props.contact(e, form)}>
 
                 <Style.ElementInput >
                     <h1>Trimite-ne un mesaj</h1>

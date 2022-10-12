@@ -7,6 +7,8 @@ import {NavbarContext} from "../../../context/Context.navbar";
 import { LinkCOmponent } from "../../../components/VLink/VLink";
 import {VLoaderView} from "../../../components/VLoader/VLoader";
 import { VCardSudare } from "../../../components/VCardSudare/VCardSudare";
+import { NavbarType } from "../../../models/navbar.model";
+
 
 
 type Props = {
@@ -19,7 +21,7 @@ type Props = {
 export const HomeView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    const contextNavbar = useContext(NavbarContext)
+    const contextNavbar = useContext(NavbarContext) as NavbarType;
     
     return (
 
@@ -36,7 +38,7 @@ export const HomeView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChi
                         <LinkCOmponent 
                                     bg="#FFD600" 
                                     color="#272727" 
-                                    link={contextNavbar?.contacte}
+                                    link={contextNavbar.contacte}
                                     >Contacteaza-ne
                     </LinkCOmponent> 
 

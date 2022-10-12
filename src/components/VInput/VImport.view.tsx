@@ -14,10 +14,28 @@ type Props = {
 
 export const VImputView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
+    
+
     return (
+
         <Style.DivForm>
          <label >{props.label}</label><br />
-         {props.type !== "textarea" ? <Style.InputTag name={props.type} css={props.nameState.css} value={props.nameState.value} type={props.type} placeholder={props.placeholder} onChange={props.onChange} id={props.label}/> : <Style.TextareaTag css={props.nameState.css}  value={props.nameState.value} placeholder={props.placeholder} onChange={props.onChange} ></Style.TextareaTag>}
+         {props.type !== "textarea" ? <Style.InputTag name={props.type} 
+                                                      css={props.nameState.css} 
+                                                      value={props.nameState.value} 
+                                                      type={props.type} 
+                                                      placeholder={props.placeholder} 
+                                                      onChange={props.onChange} 
+                                                      id={props.label}/> 
+                                                      
+                                                      : 
+
+                                                      <Style.TextareaTag css={props.nameState.css}
+                                                                         value={props.nameState.value} 
+                                                                         placeholder={props.placeholder} 
+                                                                         onChange={props.onChange}>
+                                                                            
+                                                    </Style.TextareaTag>}
          <p>{props.nameState.msj}</p>
         </Style.DivForm>
     )

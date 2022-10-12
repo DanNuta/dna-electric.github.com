@@ -94,6 +94,7 @@ export const Contact: React.FC<PropsWithChildren> = (props: PropsWithChildren) =
     }
 
 
+    
     const inputMsjHandler = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
 
@@ -112,7 +113,7 @@ export const Contact: React.FC<PropsWithChildren> = (props: PropsWithChildren) =
     }
 
 
-    const contact = async  (e: Event, form: HTMLFormElement) =>{
+    const contact = async  (e: React.FormEvent, form: HTMLFormElement) =>{
         e.preventDefault()
 
         if(inputNumeState.value === ""){
@@ -239,7 +240,18 @@ export const Contact: React.FC<PropsWithChildren> = (props: PropsWithChildren) =
     }
       
 
-    return <ContactViwe isPendingState={isPendingState} contact={contact} msjState={inputMsjState} telState={inputTelState} emailState={inputEmailState} nameState={inputNumeState}  onChangeName={inputNameHandler} onChangeEmail={inputEmailHandler} onChangeTel={inputTelHandler} onChangeMsj={inputMsjHandler}>
+    return <ContactViwe 
+                       isPendingState={isPendingState} 
+                       contact={contact} 
+                       msjState={inputMsjState} 
+                       telState={inputTelState} 
+                       emailState={inputEmailState} 
+                       nameState={inputNumeState}  
+                       onChangeName={inputNameHandler} 
+                       onChangeEmail={inputEmailHandler} 
+                       onChangeTel={inputTelHandler} 
+                       onChangeMsj={inputMsjHandler}
+                       >
             {props.children}
           </ContactViwe>
 }
