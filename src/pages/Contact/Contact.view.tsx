@@ -20,7 +20,7 @@ type Props = {
     emailState: StateFormModel,
     telState: StateFormModel,
     msjState: StateFormModel,
-    contact: (e:  React.FormEvent, form: HTMLFormElement) => void,
+    contact: (e:  React.FormEvent, form: HTMLFormElement) => Promise<void>,
     isPendingState: boolean | null;
 }
 
@@ -36,11 +36,13 @@ export const ContactViwe: React.FC<PropsWithChildren<Props>> = (props: PropsWith
     return (
         <Style.ContactDiv>
 
+    {/* (e: React.FormEvent, form: HTMLFormElement) => props.contact(e, form) */}
+
             <h1>Contact</h1>
             <p>Simțiți-vă liber să ne contactați oricând. Vom reveni cu un mesaj cât mai curând posibil!</p>
 
 
-            <Style.FormElement ref={form}  onSubmit={(e: React.FormEvent, form: HTMLFormElement) => props.contact(e, form)}>
+            <Style.FormElement ref={form}  onSubmit={() => console.log("salut")}>
 
                 <Style.ElementInput >
                     <h1>Trimite-ne un mesaj</h1>

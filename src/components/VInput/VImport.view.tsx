@@ -33,7 +33,8 @@ export const VImputView: React.FC<PropsWithChildren<Props>> = (props: PropsWithC
                                                       <Style.TextareaTag css={props.nameState.css}
                                                                          value={props.nameState.value} 
                                                                          placeholder={props.placeholder} 
-                                                                         onChange={props.onChange}>
+                                                                        //  onChange={props.onChange}
+                                                                        >
                                                                             
                                                     </Style.TextareaTag>}
          <p>{props.nameState.msj}</p>
