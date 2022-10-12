@@ -5,91 +5,59 @@ import { collection, FirestoreError, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import {WishlistContext} from "../../context/Context.wishlist";
 import {Wishlist} from "../../models/WislistContext.model";
-
+import {ProduseContextModel} from "../../models/produseContext.model";
+import {ProductsProvider} from "../../context/Context.products";
 
 
 export const Impamantare: React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{
 
 
-  const {wishlistState, addWishList} = useContext(WishlistContext) as Wishlist;
+  const {addWishList} = useContext(WishlistContext) as Wishlist;
+  const {impamantare} = useContext(ProductsProvider) as ProduseContextModel;
 
-    const [dateState, setDataState] = useState<dataProductModel[]>([]);
-    const [isPendingState, setIsPendingState] = useState<boolean | null>(null);
+
     const [filterActiveState, setFilterActiveState] = useState<boolean>(false);
-    const [localStoregeDataState, setLocalStoregeDataState] = useState<dataProductModel[]>([]);
+    const [dataFilterState, setDataFilter] = useState<dataProductModel[]>([]);
 
-    useEffect(() =>{
-        setIsPendingState(true);
-
-        const ref = collection(db, "IMPAMANTARE");
-
-        let dataDb: dataProductModel[] = [];
-    
-        const onSubscribe = onSnapshot(ref, (snapshopt) => {
-            
-          
-    
-          snapshopt.docs.forEach((item) => {
-
-            dataDb.push({
-                id: item.id,
-                categoria: item.data().categoria,
-                description: item.data().description,
-                img: item.data().img,
-                title: item.data().title
-            })
-
-
-            setDataState(dataDb);
-            setIsPendingState(false)
-
-            
-          });
-          
-          localStorage.setItem("impamantareData", JSON.stringify(dataDb))
-        });
-    
-        return () => {
-          onSubscribe();
-        };
-    }, [])
-
-
-
-    useEffect(() =>{
-
-      try{
-        const localData = JSON.parse(localStorage.getItem("impamantareData") || "");
-       
-  
-        setLocalStoregeDataState((prev) =>{
-          return prev = localData;
-        })
-  
-  
-  
-      }catch(e){
-        console.log(e)
-      }
-
-    }, [localStorage.getItem("impamantareData")])
-
-
+   
     const filterFn = () =>{
       setFilterActiveState(prev => !prev);
     }
-
-
-
-    const filterItemFn = (category: string) =>{
-
-     const newFilter = localStoregeDataState.filter((item: dataProductModel) => item.categoria === category);
-
-      setDataState(prev => { return newFilter});
+    
+    
+    const filterElementFn = (c: string) => {
+      
       setFilterActiveState(prev => !prev);
+
+        setDataFilter(prev => {
+          const newArray = impamantare.data.filter(item => item.categoria === c)
+         
+          return newArray
+
+        })
     }
 
-    return <ImpamantareView filterActive={dateState.find(item => item.categoria)} localStoregeDataState={localStoregeDataState.map(item => item.categoria)} filterItemFn={filterItemFn} filterActiveState={filterActiveState} filterFn={filterFn} onClick={addWishList} data={dateState} isPending={isPendingState}>
-        {props.children}
+
+   
+      let filter = impamantare.data.map(item => item.categoria);
+      let individualstring = [...new Set(filter)];
+
+
+    
+
+
+     
+      
+
+    return <ImpamantareView  filterActive={individualstring} 
+                             filterItemFn={filterElementFn} 
+                             filterActiveState={filterActiveState} 
+                             filterFn={filterFn} 
+                             onClick={addWishList} 
+                             data={impamantare.data} 
+                             isPending={impamantare.pending}
+                             dataFilter={dataFilterState}
+                            >
+                 {props.children}
           </ImpamantareView>
 }

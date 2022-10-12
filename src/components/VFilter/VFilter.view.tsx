@@ -5,7 +5,7 @@ import {dataProductModel} from "../../models/dataProduct.model";
 type Props = {
     onClick: () => void,
     item: string,
-    filterActive?: dataProductModel
+    display?: string
 }
 
 
@@ -13,11 +13,11 @@ export const VFilterView: React.FC<PropsWithChildren<Props>> = (props: PropsWith
 
 
 
-    return <Style.FilterElement onClick={props.onClick}>
+    return <Style.FilterElement display={props.display} onClick={props.onClick}>
 
-            <Style.BoxCheckDiv display={props.filterActive?.categoria === props.item ? "block" : "none"} >
+            <Style.BoxCheckDiv >
                         <div className="active"></div>
-                    </Style.BoxCheckDiv>
+            </Style.BoxCheckDiv>
 
 
                     <p>{props.item}</p>

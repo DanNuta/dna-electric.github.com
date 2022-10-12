@@ -4,6 +4,9 @@ import {HomeProps} from "../../../models/home.model";
 import { FirebaseError } from "firebase/app";
 import { VButton } from "../../../components/VButton/VButton";
 import {NavbarContext} from "../../../context/Context.navbar";
+import { LinkCOmponent } from "../../../components/VLink/VLink";
+import {VLoaderView} from "../../../components/VLoader/VLoader";
+import { VCardSudare } from "../../../components/VCardSudare/VCardSudare";
 
 
 type Props = {
@@ -17,28 +20,45 @@ export const HomeView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChi
 
 
     const contextNavbar = useContext(NavbarContext)
-    console.log(contextNavbar, "COntext")
+    
     return (
 
-        <Style.HeaderDiv>
+        <>
 
-          {props.isPending ? <p>loading</p> :
+          {props.isPending ? <VLoaderView/> :
 
-                <>
+                <Style.SudareExotermica>
+
                 <Style.HeadersDivText>
                        <h1>{props.data.title}</h1> 
-                       <p>{props.data.description}</p>    
+                       <p>{props.data.description}</p>  
+
+                        <LinkCOmponent 
+                                    bg="#FFD600" 
+                                    color="#272727" 
+                                    link={contextNavbar?.contacte}
+                                    >Contacteaza-ne
+                    </LinkCOmponent> 
+
+                    <VCardSudare /> 
+                    
                 </Style.HeadersDivText>
 
                 <Style.HeaderDivImg>
                     <img src={props.data.image} alt="" />
-                    <VButton bg="##272727"><a href={contextNavbar?.contacte}>Contacteaza-ne</a></VButton>
+                    <LinkCOmponent 
+                                    bg="#FFD600" 
+                                    color="#272727" 
+                                    link={contextNavbar?.contacte}
+                                    >Contacteaza-ne
+                    </LinkCOmponent>
                 </Style.HeaderDivImg>
 
-                </>
+
+                </Style.SudareExotermica>
           
           }
-        </Style.HeaderDiv>
+        </>
 
     )
 

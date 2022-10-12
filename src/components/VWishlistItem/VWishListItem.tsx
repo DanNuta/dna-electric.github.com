@@ -2,31 +2,22 @@ import React, { PropsWithChildren, useContext } from "react";
 import { VWishListItemView } from "./VWishListItem.view";
 import {dataProductModel} from "../../models/dataProduct.model";
 import {WishlistContext} from "../../context/Context.wishlist";
+import {Wishlist} from "../../models/WislistContext.model";
 
 
 type Props = {
-    data: dataProductModel
+    data: dataProductModel,
+    onClick: () => void
 }
 
 export const VWishListItem: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    const {wishlistState, setWishListState} = useContext(WishlistContext);
+    const {deleteItem} = useContext(WishlistContext) as Wishlist;
 
-    const deleteEleme = (id: string) =>{
+   
 
-        setWishListState((props: dataProductModel[]) => {
-
-            const newArray = props.filter(item => item.id !== id);
-            
-            return newArray;
-        }
-
-            
-            )
-
-    }
-    return <VWishListItemView delete={deleteEleme} data={props.data}>
+    return <VWishListItemView onClick={props.onClick} delete={deleteItem} data={props.data}>
               {props.children}
           </VWishListItemView>
 }

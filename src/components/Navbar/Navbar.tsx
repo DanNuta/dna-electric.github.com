@@ -10,6 +10,7 @@ import { db } from "../../firebase/config";
 
 type Props = {
   bg: string;
+  data: NavbarType
 };
 
 export const Navbar: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) => {
@@ -25,7 +26,6 @@ export const Navbar: React.FC<PropsWithChildren<Props>> = (props: PropsWithChild
 
 
   const wishlist = () =>{
-
       setWishList(prev => !prev)
   }
 
@@ -37,6 +37,7 @@ export const Navbar: React.FC<PropsWithChildren<Props>> = (props: PropsWithChild
       toggle={checkToggleFn}
       onClick={wishlist}
       wishlist={wishlistToggle}
+      data={props.data}
     >
       {props.children}
     </NavbarView>

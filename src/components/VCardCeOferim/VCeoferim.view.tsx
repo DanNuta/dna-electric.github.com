@@ -12,7 +12,7 @@ type Props = {
 
 export const VCeOferimView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
-    console.log(props)
+   
 
 
     return (

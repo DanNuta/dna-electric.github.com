@@ -5,13 +5,14 @@ import {dataProductModel} from "../../models/dataProduct.model";
 
 type Props = {
     data: dataProductModel,
-    onClick: (item: dataProductModel) => void
+    onClick: (item: dataProductModel) => void,
+    localStorege?:string,
 }
 
 
 export const VCardItem: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
-    return <VCardItemView data={props.data} onClick={props.onClick}>
+    return <VCardItemView localStorege={props.localStorege} data={props.data} onClick={props.onClick}>
               {props.children}
           </VCardItemView>
 }

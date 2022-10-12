@@ -12,4 +12,8 @@ p{
     margin-bottom: 20px;
 }
 
+img{
+    width: 100%;
+}
+
 `

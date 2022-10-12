@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {theme} from "../../components/styles/Theme";
 
 export const ImpamantareDiv = styled.div`
 
@@ -34,6 +35,10 @@ margin: 26px 0 31px 0;
     display: flex;
     gap: 10px;
     align-items: center;
+
+    ${theme.breakpoints.up("md")}{
+          display: none;
+}
     
     li{
         img{

@@ -18,8 +18,7 @@ const displayFlex = (props: Props) =>`
   ${props.flexDirection && `flex-direction: ${props.flexDirection}`};
   ${props.justifyContent && `justify-content: ${props.justifyContent}`};
   ${props.gap && `gap: ${props.gap}`};
-
-`
+`;
 
 
 export const ContactDiv = styled.div`
@@ -76,7 +75,7 @@ export const AboutUsElement = styled.div`
             ${displayFlex({display: "flex", alignItems: "center", gap: "15px 10px"})}
 
             img{
-                width: 10%;
+               
             }
         }
     }

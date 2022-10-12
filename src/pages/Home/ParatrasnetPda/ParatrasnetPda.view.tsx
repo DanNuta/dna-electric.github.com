@@ -12,7 +12,7 @@ type Props = {
 export const ParatrasnetPdaView:React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    console.log(props)
+    
     return (
         <Style.DivElement>
             <h1 className="title">{props.data.title}</h1>

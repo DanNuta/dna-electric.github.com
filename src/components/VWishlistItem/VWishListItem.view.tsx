@@ -7,9 +7,9 @@ import {Link} from "react-router-dom";
 
 type Props = {
     data: dataProductModel,
-    delete: (id: string) => void
+    delete: (id: string) => void,
+    onClick: () => void
 }
-
 
 
 
@@ -17,8 +17,8 @@ export const VWishListItemView: React.FC<PropsWithChildren<Props>> = (props: Pro
 
 
     return <Style.WishlistItemDiv>
-               <Link to="/">
-                   <div className="img_title">
+               <Link to={`${props.data.id}`}>
+                   <div onClick={props.onClick}  className="img_title">
 
                        <div className="img_wl">
                             <img src={props.data.img[0]} alt="" />

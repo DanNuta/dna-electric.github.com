@@ -5,22 +5,30 @@ export const WishlistItemDiv = styled.div`
 
 display: flex;
 background-color: white;
-justify-content: space-between;
 height: 85px;
 gap: 20px;
 padding: 0 10px 0 0;
+position: relative;
+
+a{
+    color: #272727;
+    text-decoration: none;
+}
 
 .img_title{
     display: flex;
     height: 100%;
     gap: 10px;
-
+    margin-right: 30px;
+  
     .img_wl{
         height: 100%;
         width: 120px;
+        display: flex;
+        justify-content: center;
         
         img{
-            width: 100%;
+           
             height: 100%;
             object-fit: cover;
         }
@@ -28,6 +36,7 @@ padding: 0 10px 0 0;
 
 
     .title{
+      
 
         h4{
             padding-top: 13px;
@@ -37,8 +46,10 @@ padding: 0 10px 0 0;
 
 
 .cancel{
-    padding-top: 13px;
-    font-size: 34px;
+    cursor: pointer;
+    top: 5px;
+    position: absolute;
+   right: 10px;
 }
 
 

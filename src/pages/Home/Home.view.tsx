@@ -13,6 +13,9 @@ import { Contact } from "../Contact/Contact";
 
 export const HomeView: React.FC = () =>{
 
+    
+
+
     return (
         <Style.HomeDiv>
             <Home/>

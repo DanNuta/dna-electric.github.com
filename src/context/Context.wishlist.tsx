@@ -1,9 +1,6 @@
-import React, {useState, createContext, Children, PropsWithChildren} from "react";
+import React, {useState, createContext, PropsWithChildren} from "react";
 import {dataProductModel} from "../models/dataProduct.model";
 import {Wishlist} from "../models/WislistContext.model";
-import { ElementDiv } from "../pages/Home/Personal/Personal.module";
-
-
 
 
 export const WishlistContext = createContext<Wishlist | null>(null);
@@ -21,9 +18,7 @@ export const WislistContext: React.FC<PropsWithChildren<dataProductModel>> = ({c
 
     const addWishList = (item: dataProductModel) =>{
 
-       const wishListChecl = wishlistState.some(element => element.id === item.id)
-
-
+       const wishListChecl = wishlistState.some(element => element.id === item.id);
 
        wishListChecl ?
         setWishListState(prev => {
@@ -35,15 +30,27 @@ export const WislistContext: React.FC<PropsWithChildren<dataProductModel>> = ({c
           let newArray = [...prev, item];
           return newArray;
          })
-
-
-
-         console.log(wishListChecl, "click")
     }
 
 
 
-    return <WishlistContext.Provider value={{wishlistState, addWishList}}>
+    const deleteItem = (id: string) =>{
+
+      setWishListState((prev) => {
+        const newArray = prev.filter(item => item.id !== id);
+        return newArray
+    })
+  }
+
+
+
+  const deleteAll = () =>{
+    setWishListState((prev: dataProductModel[]) =>{
+      return []
+  })
+  }
+
+    return <WishlistContext.Provider value={{wishlistState, addWishList, deleteItem, deleteAll}}>
               {children}
           </WishlistContext.Provider>
 }

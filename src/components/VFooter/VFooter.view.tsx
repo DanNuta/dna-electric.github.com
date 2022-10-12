@@ -1,13 +1,14 @@
 import React, {PropsWithChildren} from "react";
 import { NavbarType } from "../../models/navbar.model";
 import * as Style from "./VFooter.model";
-import Logo from "../../icons/logo/logo.png";
+import Logo from "../../icons/logo/logo.svg";
 import telefon from "../../icons/contact_icon/phone.svg";
 import adress from "../../icons/contact_icon/location.svg";
 import mail from "../../icons/contact_icon/email.svg";
 import facebook from "../../icons/social_media_icon/facebook.svg";
 import youtube from "../../icons/social_media_icon/youtube.svg";
 import arrow_up from "../../icons/arrow_icon/arrow_up.svg";
+import {Link} from "react-router-dom";
 
 type Props = {
     data: NavbarType
@@ -15,7 +16,15 @@ type Props = {
 
 export const VFooterView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
-    const dataYar: number= new Date().getFullYear()
+    const dataYar: number= new Date().getFullYear();
+
+    const scrollTop = () =>{
+           window.scroll({
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth'
+          });
+    }
 
     return (
 
@@ -27,7 +36,7 @@ export const VFooterView: React.FC<PropsWithChildren<Props>> = (props: PropsWith
 
             <Style.LogoProgramDiv>
 
-                <a className="logo" href="/"><img src={Logo} alt="" /></a>
+                <Link onClick={scrollTop} className="logo" to="/"><img src={Logo} alt="" /></Link>
 
                 <ul>
                     <li>Program: 9:00 - 19:00</li>
@@ -42,10 +51,12 @@ export const VFooterView: React.FC<PropsWithChildren<Props>> = (props: PropsWith
 
                 <nav>
                     <ul className="links">
-                        <li><a href="/">{props.data.Despre}</a></li>
-                        <li><a href={props.data.impamantare}>{props.data.impamantare}</a></li>
-                        <li><a href={props.data.paratrasnet}>{props.data.paratrasnet}</a></li>
-                        <li><a href={props.data.supratensiune}>{props.data.supratensiune}</a></li>
+                        <li><Link onClick={scrollTop} to="/">{props.data.Despre}</Link></li>
+
+
+                        <li><Link onClick={scrollTop} to={props.data.impamantare}>{props.data.impamantare}</Link></li>
+                        <li><Link onClick={scrollTop} to={props.data.paratrasnet}>{props.data.paratrasnet}</Link></li>
+                        <li><Link onClick={scrollTop} to={props.data.supratensiune}>{props.data.supratensiune}</Link></li>
                     </ul>
 
 

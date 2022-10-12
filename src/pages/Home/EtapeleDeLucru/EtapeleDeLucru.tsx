@@ -50,6 +50,6 @@ export const EtapeleDeLucru:React.FC<PropsWithChildren<EtapeleDeLucruModel>> = (
       }, []);
 
     return <EtapeleDeLucruView data={dataState}>
-        {props.children}
-    </EtapeleDeLucruView>
+            {props.children}
+        </EtapeleDeLucruView>
 }

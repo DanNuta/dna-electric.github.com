@@ -6,7 +6,7 @@ import facebook from "../../../icons/social_media_icon/facebook.svg";
 import youtube from "../../../icons/social_media_icon/youtube.svg";
 import wishlist from "../../../icons/social_media_icon/wish_list.svg";
 import {NavbarContext} from "../../../context/Context.navbar";
-
+import {Link} from "react-router-dom";
 
 
 
@@ -31,12 +31,12 @@ export const MobileResponsiveView: React.FC<PropsWithChildren<Props>> = (props: 
 
 
             <Style.MolobleUl>
-                <Style.MobileLiElement><a href={contectNav?.Despre}>{contectNav?.Despre}</a></Style.MobileLiElement>
-                <Style.MobileLiElement><a href={contectNav?.impamantare}>{contectNav?.impamantare}</a></Style.MobileLiElement>
-                <Style.MobileLiElement><a href={contectNav?.paratrasnet}>{contectNav?.paratrasnet}</a></Style.MobileLiElement>
-                <Style.MobileLiElement><a href={contectNav?.supratensiune}>{contectNav?.supratensiune}</a></Style.MobileLiElement>
-                <Style.MobileLiElement><a href={contectNav?.articole}>{contectNav?.articole}</a></Style.MobileLiElement>
-                <Style.MobileLiElement><a href={contectNav?.contacte}>{contectNav?.contacte}</a></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to="/">{contectNav?.Despre}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.impamantare}>{contectNav?.impamantare}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.paratrasnet}>{contectNav?.paratrasnet}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.supratensiune}>{contectNav?.supratensiune}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.articole}>{contectNav?.articole}</Link></Style.MobileLiElement>
+                <Style.MobileLiElement  onClick={props.toggle}><Link to={contectNav?.contacte}>{contectNav?.contacte}</Link></Style.MobileLiElement>
             </Style.MolobleUl>
 
 
@@ -44,7 +44,7 @@ export const MobileResponsiveView: React.FC<PropsWithChildren<Props>> = (props: 
                 <Style.MobileDiv>
                     <Style.MobileLiElement><a href={contectNav?.Link_facebook} target="_blank"><img src={facebook} alt="facebook" /></a></Style.MobileLiElement>
                     <Style.MobileLiElement><a href={contectNav?.Link_youtube} target="_blank"><img src={youtube} alt="Youtube" /></a></Style.MobileLiElement>
-                    <Style.MobileLiElement><img src={wishlist}/></Style.MobileLiElement>
+                   
                 </Style.MobileDiv>
 
                 <Style.MobileLiElement color="yolow">Program: 9:00 AM - 19:00 PM</Style.MobileLiElement>

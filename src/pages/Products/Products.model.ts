@@ -1,4 +1,5 @@
 import styled, {css} from "styled-components";
+import {theme} from "../../components/styles/Theme";
 
 
     type Props = {
@@ -8,7 +9,8 @@ import styled, {css} from "styled-components";
         justifyContent?: string,
         flexDirection?: string,
         center?: string,
-        gap?: string
+        gap?: string,
+        
     }
 
 
@@ -27,7 +29,20 @@ const FlexFn = (props: Props) =>`
 export const ItemProductsDiv = styled.div`
 
 width: 90%;
-margin:45px  auto 0 auto;
+margin: 45px  auto 0 auto;
+
+
+${theme.breakpoints.up("md")}{
+  display: flex;
+  gap: 1.5rem;
+}
+
+.title{
+
+    ${theme.breakpoints.up("md")}{
+        display: none;
+}
+}
 
 `;
 
@@ -40,18 +55,37 @@ export const ImgSlider = styled.div`
     position: relative;
     height: 280px;
     margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    ${theme.breakpoints.up("md")}{
+       
+        width: 50%;
+        
+      
+}
 
     img{
         position: absolute;
         height: 100%;
+
+        ${theme.breakpoints.up("md")}{
+       position: relative;
+}
     }
 
     .btn{
-        
-        z-index: 10;
+        z-index: 10; 
         position: relative;
         height: 100%;
-        ${FlexFn({display: "flex", alignItems: "center"})}
+        width: 100%;
+
+        ${theme.breakpoints.up("md")}{
+            position: absolute;
+     
+}
+        //${FlexFn({display: "flex", alignItems: "center"})}
 
         .prev{
             
@@ -70,14 +104,35 @@ export const ImgSlider = styled.div`
 
 export const InfoDiv = styled.div`
 
+
+${theme.breakpoints.up("md")}{
+       
+        width: 50%;
+     }
+
 `;
 
 
 
 export const DescriereDiv = styled.div`
+
+.title{
+    display: none;
+
+    ${theme.breakpoints.up("md")}{
+        display: block;
+       
+      
+     }
+
+
+}
    p{
     margin: 10px 0 20px 0;
    }
+
+
+  
 `;
 
 
@@ -93,6 +148,7 @@ export const ContactShoWishlistDiv = styled.div`
 
         margin-top: 20px;
         li{
+            cursor: pointer;
             display: flex;
 
             ${FlexFn({display: "flex", alignItems: "center", gap: "5px"})}
@@ -128,6 +184,12 @@ border: 1px solid rgba(39, 39, 39, .1);
 text-align: center;
 padding: 20px 16px;
 
+${theme.breakpoints.up("md")}{
+   width: 100%;
+   margin: 0;
+   
+}
+
 
 img{
     width: 60%;
@@ -136,9 +198,11 @@ img{
 
 h5{
     margin-bottom: 10px;
-}
+}`;
 
 
 
+export const Button = styled.button<Props>`
+  display: ${props => props.display};
 `
 

@@ -11,7 +11,7 @@ export type NavbarType = {
     paratrasnet?: string,
     supratensiune?: string,
     articole?: string,
-    contacte?: string,
+    contacte: string,
     email?: string,
     adresa?: string,
     map?: string

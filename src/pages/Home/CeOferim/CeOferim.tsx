@@ -29,7 +29,7 @@ export const CeOferim: React.FC<PropsWithChildren> = (props: PropsWithChildren) 
           snapshopt.docs.forEach((item) => {
 
 
-            dataBD.push({title: item.data().title, descrition: item.data().description})
+          dataBD.push({title: item.data().title, descrition: item.data().description})
 
 
              setDataState(dataBD);

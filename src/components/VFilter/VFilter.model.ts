@@ -12,6 +12,7 @@ display: flex;
 align-items: center;
 gap: 15px;
 padding-left: 20px;
+cursor: pointer;
 
 
 

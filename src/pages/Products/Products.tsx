@@ -3,43 +3,59 @@ import {ProductsView} from "./Products.view";
 import {useParams} from "react-router-dom";
 import { collection, FirestoreError, onSnapshot, getDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase/config";
-import { ThemeConsumer } from "styled-components";
 import {WishlistContext} from "../../context/Context.wishlist";
 import {dataProductModel} from "../../models/dataProduct.model";
 import {Wishlist} from "../../models/WislistContext.model";
 
 
-export const Products: React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{
 
+
+type Props = {
+    collection?: string,
+    localStorege?: string;
+    products?: dataProductModel[],
+    link?: string
+}
+
+
+export const Products: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
     const {id} = useParams();
 
-    const {addWishList} = useContext(WishlistContext) as Wishlist;
 
-    const [dateState, setDataState] = useState<dataProductModel>();
+    
+    const {addWishList} = useContext(WishlistContext) as Wishlist;
+    
+
+    const [dateState, setDataState] = useState<dataProductModel>({
+        categoria: "",
+        description: [],
+        id: "",
+        img: [],
+        title: ""
+    });
 
     const [isPendingState, setIsPendingState] = useState<boolean | null>(null);
     const [contorState, setContorState] = useState(0);
-
-    const [localStoregeDataState, setLocalStoregeDataState] = useState<dataProductModel[]>([]);
     
 
     useEffect(() =>{
         setIsPendingState(true);
-
-        const ref = doc(db, "IMPAMANTARE", `${id}`);
-
+        
+        const ref = doc(db, `${props.collection}`, `${id}`);
+        
+        
         getDoc(ref)
-            .then(document =>{
+        .then(document =>{
                 setDataState({ categoria: document.data()?.categoria,
                     description: document.data()?.description,
                     id: document.id,
                     img: document.data()?.img,
                     title: document.data()?.title})
+                    setIsPendingState(false)
             })
 
-            setIsPendingState(false)
         
-    }, [])
+    }, [`${id}`])
 
 
 
@@ -96,29 +112,17 @@ export const Products: React.FC<PropsWithChildren> = (props: PropsWithChildren) 
 
     }
 
-
-   
-
-
-
-useEffect(() =>{
-
-    try{
-      const localData = JSON.parse(localStorage.getItem("impamantareData") || "");
-     
-      setLocalStoregeDataState((prev) =>{
-        
-        return prev = localData;
-      })
-
-    }catch(e){
-      console.log(e)
-    }
-
-  }, [localStorage.getItem("impamantareData")])
-
-
-
-    return <ProductsView produseSimilare={localStoregeDataState && localStoregeDataState} wishlist={addWishList} prev={prevImg} contor={contorState} next={nextImg} data={dateState} isPending={isPendingState}>{props.children}</ProductsView>
+    return <ProductsView 
+                         wishlist={addWishList} 
+                         prev={prevImg} 
+                         contor={contorState} 
+                         next={nextImg} 
+                         data={dateState} 
+                         isPending={isPendingState}
+                         products={props.products}
+                         link={props.link}
+                         >
+                {props.children}
+            </ProductsView>
 
 }

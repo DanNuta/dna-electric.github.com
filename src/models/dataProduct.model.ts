@@ -3,5 +3,5 @@ export type dataProductModel = {
     description: string[],
     id: string,
     img: string[],
-    title: "string"
+    title: string
 }

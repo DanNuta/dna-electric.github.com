@@ -7,6 +7,7 @@ import star from "../../../icons/personal/star.svg";
 import people from "../../../icons/personal/personal.svg";
 import dolar from "../../../icons/personal/dolar.svg";
 import {NavbarContext} from "../../../context/Context.navbar";
+import { LinkCOmponent } from "../../../components/VLink/VLink";
 
 type Props = {
     data: PersonalModel[];
@@ -30,12 +31,12 @@ export const PersonalView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
 
 
             <Style.PersonalDiv>
-                {props.data && props.data.map(item => {
-                    return <VPersonal  data={item} />
+                {props.data && props.data.map((item, i) => {
+                    return <VPersonal key={i} data={item} />
                 })}
 
 
-                <VButton bg="#272727"><a href={contextNavbar?.contacte}>{props.contact.contact}</a></VButton>
+                <LinkCOmponent color="white" bg="#272727" link={`${contextNavbar?.contacte}`}>Contacteaza-ne</LinkCOmponent>
             </Style.PersonalDiv>
 
         </Style.ElementDiv>

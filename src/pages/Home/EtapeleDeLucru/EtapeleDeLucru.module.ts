@@ -29,6 +29,10 @@ margin-bottom: 20px;
 
 .img{
     margin-top: 20px;
+
+    img{
+        width: 100%;
+    }
 }
 
 `

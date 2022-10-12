@@ -11,10 +11,7 @@ import { db } from "../firebase/config";
 export const NavbarContext = createContext<NavbarType | null>(null);
 
 
-
-
 export const NavbarProvider: React.FC<PropsWithChildren<NavbarType>> = (props: PropsWithChildren<NavbarType>) =>{
-
 
     const [data, setData] = useState<NavbarType>({});
 

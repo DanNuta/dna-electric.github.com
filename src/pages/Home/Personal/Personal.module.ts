@@ -7,7 +7,7 @@ type Props = {
 
 export const ElementDiv = styled.div<Props>`
 
-margin-top: ${props => props.margin ? props.margin : 0}
+margin-top: ${props => props.margin ? props.margin : 0};
 
 `;
 
@@ -18,6 +18,5 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 align-items: center;
-
 
 `

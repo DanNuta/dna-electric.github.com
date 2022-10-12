@@ -1,8 +1,9 @@
-import React, {PropsWithChildren} from "react";
+import React, {PropsWithChildren, useContext} from "react";
 import { EtapeleDeLucruModel } from "../../../models/etapeleDeLucru";
 import * as Style from "./EtapeleDeLucru.module";
-import {VButton} from "../../../components/VButton/VButton";
-
+import { LinkCOmponent } from "../../../components/VLink/VLink";
+import {NavbarContext} from "../../../context/Context.navbar";
+import {NavbarType} from "../../../models/navbar.model";
 
 type Props = {
     data: EtapeleDeLucruModel[];
@@ -11,14 +12,14 @@ type Props = {
 export const EtapeleDeLucruView:React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    console.log(props)
+    const contextNavbar = useContext(NavbarContext) as NavbarType;
     return (
         <Style.EtapeleDeLucruDiv>
             <h1 className="title">Etapele de lucru</h1>
 
 
             {props.data && props.data.map((item, index) => (
-                <Style.EtapeleLucruItemDiv>
+                <Style.EtapeleLucruItemDiv key={index}>
                      <div className="title">
                         <h1>{index +1}</h1>
                         <h1>{item.title}</h1>
@@ -31,7 +32,11 @@ export const EtapeleDeLucruView:React.FC<PropsWithChildren<Props>> = (props: Pro
             ))}
 
 
-            <VButton bg="#272727"><a href="/contacte">Contacteaza-ne</a></VButton>
+          <LinkCOmponent onClick={() => {window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });}} bg="#272727" color="white" link={contextNavbar?.contacte}>Contacteaza-ne</LinkCOmponent>
         </Style.EtapeleDeLucruDiv>
     )
 }

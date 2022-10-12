@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { Button } from "./VButton.model";
+import * as Styled from "./VButton.model";
 
 type Props = {
   toggle?: (e: Event) => void;
@@ -14,8 +14,13 @@ export const VButtonView: React.FC<PropsWithChildren<Props>> = (
   props: PropsWithChildren<Props>
 ) => {
   return (
-    <Button color={props.color} padding={props.padding} bg={props.style} onClick={props.toggle}>
+    <Styled.Button 
+                    color={props.color} 
+                    padding={props.padding} 
+                    bg={props.style} 
+                    onClick={props.toggle}
+                    >
       {props.children}
-    </Button>
+    </Styled.Button>
   );
 };

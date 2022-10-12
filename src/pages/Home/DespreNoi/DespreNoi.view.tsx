@@ -12,7 +12,6 @@ type Props = {
 
 export const DespreNoiView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
-    console.log(props, "Element")
     return (
         <Style.SectionElement>
             <h1>{props.data.title}</h1>

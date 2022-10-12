@@ -12,7 +12,8 @@ import {Wishlist} from "../../models/WislistContext.model";
 
 type Props = {
     data: dataProductModel,
-    onClick?: (item: dataProductModel) => void;
+    onClick?: (item: dataProductModel) => void,
+    localStorege?: string
 }
 
 
@@ -20,28 +21,35 @@ export const VCardItemView: React.FC<PropsWithChildren<Props>> = (props: PropsWi
 
     
     const {wishlistState} = useContext(WishlistContext) as Wishlist;
-
- 
-
-
-    const checkItExist = wishlistState.findIndex((item:dataProductModel) => item.id === props.data.id);
+    const checkItExist = wishlistState.some((item:dataProductModel) => item.id === props.data.id);
     
+
     
     return (
         <Style.VCardItemDiv>
+
            <Link to={`${props.data.id}`}>
                 <div className="img_div">
                     <img src={props.data.img[0]} alt="" />
                 </div>
-
-            <h1 className="title">{props.data.title}</h1>
            </Link>
 
 
-            <div className="action_btn">
-                 <span><img src={shop} alt="shop" /></span>
-                <span onClick={() => props.onClick?.(props.data)}><img src={checkItExist ? wishlistHover : wishlist} alt="wishlist" /></span>
-            </div>
+        <div className="title_shop">
+
+                    <h1 className="title">{props.data.title}</h1>
+
+                    <div className="action_btn">
+                        <span><img src={shop} alt="shop" /></span>
+                        <span onClick={() => props.onClick?.(props.data)}><img src={checkItExist ? wishlist : wishlistHover } alt="wishlist" /></span>
+                    </div>
+
+        </div>
+
+
+
+
+    
         </Style.VCardItemDiv>
     )
 }

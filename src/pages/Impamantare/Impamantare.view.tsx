@@ -2,12 +2,10 @@ import React, { PropsWithChildren } from "react";
 import {dataProductModel} from "../../models/dataProduct.model";
 import * as Styled from "./Impamantare.model";
 import {Grid} from  '@mui/material';
-import {VCardItemView} from "../../components/VCardItem/VCardItem.view";
+import {VCardItem} from "../../components/VCardItem/VCardItem";
 import filter from "../../icons/card_product_icon/filter.svg";
 import {VFilter} from "../../components/VFilter/VFilter";
-import { connectFirestoreEmulator } from "firebase/firestore";
-import {Route, Routes, useParams, useLocation} from "react-router-dom";
-import { Products } from "../Products/Products";
+
 
 
 type Props = {
@@ -17,14 +15,16 @@ type Props = {
     filterFn: () => void,
     filterActiveState: boolean,
     filterItemFn: (c: string) => void,
-    localStoregeDataState: string[],
-    filterActive?: dataProductModel
+    filterActive?: string[],
+    dataFilter: dataProductModel[];
 }
 
 export const ImpamantareView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
+   
 
 
-
+    
+  
     return (
         <Styled.ProductsDiv>
            <h1 className="title_page">PRODUSE SI ACCESORII</h1>
@@ -32,6 +32,7 @@ export const ImpamantareView: React.FC<PropsWithChildren<Props>> = (props: Props
 
 
            <Styled.FilterDiv>
+
                 <ul onClick={props.filterFn}>
                     <li><img src={filter} alt="filter" /></li>
                     <li>Filter</li>
@@ -40,36 +41,73 @@ export const ImpamantareView: React.FC<PropsWithChildren<Props>> = (props: Props
 
             
                 {props.filterActiveState && <div className="filter">
-                <h1>Impamantare</h1> 
-                    {props.localStoregeDataState && props.localStoregeDataState.map((item: string) => {
-                        return <VFilter filterActive={props.filterActive} item={item} onClick={() => props.filterItemFn(item)}></VFilter>
-                    })}
-                </div>
+                    <h1>Impamantare</h1> 
+                        {props.data && props.filterActive?.map((item, index) => {
+
+                            return <VFilter 
+                                            display={props.dataFilter[0] !== undefined && props.dataFilter[0].categoria === item ? "block" : "none"} 
+                                            //filterActive={props.filterActive} 
+                                            item={item} 
+                                            onClick={() => props.filterItemFn(item)}
+                                            >
+                                   </VFilter>
+                        })}
+                    </div>
                 } 
+
+
+  
+
+     <Grid item lg={3}>
+              <div className="filter">
+                    <h1>Impamantare</h1> 
+                        {props.data && props.filterActive?.map((item, index) => {
+
+                            return <VFilter 
+                                            display={props.dataFilter[0] !== undefined && props.dataFilter[0].categoria === item ? "block" : "none"} 
+                                            //filterActive={props.filterActive} 
+                                            item={item} 
+                                            onClick={() => props.filterItemFn(item)}
+                                            >
+                                   </VFilter>
+                        })}
+                    </div>
+
+        </Grid>
+                
 
 
            </Styled.FilterDiv>
 
+    <Grid container spacing={2}>
+           
+                    {props.isPending ? <p>Loading...</p> : (props.dataFilter[0] === undefined ? props.data.map((item, index: number) =>{
 
-            <Grid container spacing={2}> 
-                    {props.isPending ? <p>Loading...</p> : props.data.map((item, index) =>{
-                        return (
-                           
-                            <Grid xs={6} item key={index} >
-                               
-                                    <VCardItemView onClick={props.onClick} data={item}></VCardItemView>
-                                
-                            </Grid>
-                           
-                        )
-                    })}
+            return (
+                <Grid xs={6} lg={4} item key={index} >
+                        <VCardItem localStorege="impamantare" onClick={props.onClick} data={item}></VCardItem>
+                </Grid>
+            
+            )
+            }) : props.dataFilter.map((item, index: number) =>{
 
-            </Grid>
+                return (
+                    <Grid lg={4} xs={6} item key={index} >
+                            <VCardItem onClick={props.onClick} data={item}></VCardItem>
+                    </Grid>
+                   
+                )
+            }))}
 
 
-            <Routes>
-                <Route path=":id" element={<Products/>}/>
-            </Routes>
+
+        </Grid>
+
+
+           
+
+
+            
 
 
         </Styled.ProductsDiv>

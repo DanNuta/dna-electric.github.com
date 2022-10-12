@@ -6,10 +6,18 @@ import {dataProductModel} from "../../models/dataProduct.model";
 type Props = {
     onClick: () => void,
     item: string,
-    filterActive?: dataProductModel
+    //filterActive?: string[] | undefined;
+    display?: string
+
 }
 
 export const VFilter: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
-    return <VFilterView filterActive={props.filterActive}  item={props.item} onClick={props.onClick}>{props.children}</VFilterView>
+
+   
+
+    return <VFilterView display={props.display}  
+                        item={props.item} onClick={props.onClick}>
+                        {props.children}
+            </VFilterView>
 }

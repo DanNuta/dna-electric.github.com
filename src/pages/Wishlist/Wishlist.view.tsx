@@ -4,22 +4,23 @@ import {WishlistContext} from "../../context/Context.wishlist";
 import {dataProductModel} from "../../models/dataProduct.model";
 import { VButton } from "../../components/VButton/VButton";
 import { VWishListItem } from "../../components/VWishlistItem/VWishListItem";
+import {Wishlist} from "../../models/WislistContext.model";
 
 
 type Props = {
-    onClick: () => void
+    onClick: () => void,
+    wishlist: () => void;
+    wishListToggle: boolean
 }
 
 
 export const WishlistView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    const {wishlistState, setWishListState} = useContext(WishlistContext);
+    const {wishlistState} = useContext(WishlistContext) as Wishlist;
 
 
-    console.log(wishlistState, "Element")
-
-    return <Style.WishListDiv>
+    return <Style.WishListDiv active={props.wishListToggle && "active"}>
         
             <div className="btn_delete_wishlist">
                     <h1>Preferinte</h1>
@@ -32,7 +33,7 @@ export const WishlistView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
 
             {wishlistState.map((item: dataProductModel, index: number) => {
 
-                return (<VWishListItem data={item}></VWishListItem>)
+                return (<VWishListItem onClick={props.wishlist} data={item}></VWishListItem>)
             })}
 
            </div>

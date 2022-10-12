@@ -18,10 +18,6 @@ export const  Button = styled.button<ButtonProps>`
  color: ${props => props.color && props.color};
 
 
- a{
-    color: ${props => props.color ? props.color : "white"};
- }
-
 
  @media ${device.laptop} {
     display: none

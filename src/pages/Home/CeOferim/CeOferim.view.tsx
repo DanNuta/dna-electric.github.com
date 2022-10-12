@@ -13,6 +13,8 @@ type Props = {
 
 export const CeOferimView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
+
+ 
     return (
 
 
@@ -22,10 +24,10 @@ export const CeOferimView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
             <h1 className="title">Ce oferim</h1>
         <Style.CeOferimDiv>
             
-          {props.data && props.data.map(item =>{
+          {props.data && props.data.map((item, index) =>{
 
             return (
-                <CeOferim item={item}></CeOferim>
+                <CeOferim key={index} item={item}></CeOferim>
             )
           })}  
         </Style.CeOferimDiv>
