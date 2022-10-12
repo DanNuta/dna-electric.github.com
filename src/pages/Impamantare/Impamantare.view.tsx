@@ -55,8 +55,11 @@ export const ImpamantareView: React.FC<PropsWithChildren<Props>> = (props: Props
                     </div>
                 } 
 
+</Styled.FilterDiv>
+
 
   
+<Grid container spacing={2}>
 
      <Grid item lg={3}>
               <div className="filter">
@@ -77,14 +80,14 @@ export const ImpamantareView: React.FC<PropsWithChildren<Props>> = (props: Props
                 
 
 
-           </Styled.FilterDiv>
+          
 
-    <Grid container spacing={2}>
+    
            
                     {props.isPending ? <p>Loading...</p> : (props.dataFilter[0] === undefined ? props.data.map((item, index: number) =>{
 
             return (
-                <Grid xs={6} lg={4} item key={index} >
+                <Grid xs={6} lg={3} item key={index} >
                         <VCardItem localStorege="impamantare" onClick={props.onClick} data={item}></VCardItem>
                 </Grid>
             
@@ -92,7 +95,7 @@ export const ImpamantareView: React.FC<PropsWithChildren<Props>> = (props: Props
             }) : props.dataFilter.map((item, index: number) =>{
 
                 return (
-                    <Grid lg={4} xs={6} item key={index} >
+                    <Grid lg={3} xs={6} item key={index} >
                             <VCardItem onClick={props.onClick} data={item}></VCardItem>
                     </Grid>
                    
