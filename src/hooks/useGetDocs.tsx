@@ -14,14 +14,17 @@ export function getDocsFirestore(idDB: string) {
 
   useEffect(() => {
 
-    setPending(true);
     const ref = collection(db, idDB);
+    
+    setPending(true);
+    
     const onSubscribe = onSnapshot(ref, (snapshopt) => {
-      setError(null);
       
+      
+
       let dataSnapshot: dataProductModel[] = [];
 
-      snapshopt.docs.forEach((item) => {
+      snapshopt.docs.forEach((item, i) => {
         dataSnapshot.push({
           id: item.id,
           title: item.data().title,
@@ -32,19 +35,27 @@ export function getDocsFirestore(idDB: string) {
       });
       
       setData(dataSnapshot);
-      setPending(false)
+      setPending((prev => {return prev = false}))
+     
       
-    }, (error) =>{
+     
+      
+    },(error) =>{
       setError(error)
       setPending(false)
     });
 
-    setPending(false)
+   
+
+    
 
     
     return () => {
       onSubscribe();
     };
+
+
+
   }, [idDB]);
 
 

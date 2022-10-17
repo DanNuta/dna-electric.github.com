@@ -23,7 +23,7 @@ export const WishlistView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
     return <Style.WishListDiv active={props.wishListToggle}>
         
             <div className="btn_delete_wishlist">
-                    <h1>Preferinte</h1>
+                    <h2>Preferinte</h2>
                     <VButton onClick={props.onClick} color="white" bg="#272727">Sterge</VButton>
             </div>
 

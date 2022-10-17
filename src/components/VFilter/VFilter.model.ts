@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {theme} from "../styles/Theme";
 
 
 type Props = {
@@ -13,6 +14,15 @@ align-items: center;
 gap: 15px;
 padding-left: 20px;
 cursor: pointer;
+
+
+p{
+    
+    ${theme.breakpoints.up("lg")}{
+        margin-bottom: 15px;
+        
+    }
+}
 
 
 
@@ -33,6 +43,11 @@ export const BoxCheckDiv = styled.div<Props>`
     border: 1px solid rgba(39, 39, 39, 1);
     padding: 2px;
     
+
+    ${theme.breakpoints.up("lg")}{
+        margin-bottom: 15px;
+        
+    }
 
     .active{
         display: ${props => props.display};

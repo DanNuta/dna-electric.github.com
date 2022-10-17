@@ -4,17 +4,18 @@ import { db } from "../../firebase/config";
 import { VFooterView } from "./VFooter.view";
 import { NavbarType } from "../../models/navbar.model";
 import {NavbarContext} from "../../context/Context.navbar";
+import {NavbarContextModel} from "../../models/NavbarContext.model";
 
 export const VFooter:React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{
 
 
-  const NavbarElement = useContext(NavbarContext) as NavbarType;
+  const {data} = useContext(NavbarContext) as NavbarContextModel;
 
 
 
    
 
-    return <VFooterView data={NavbarElement}>
+    return <VFooterView data={data}>
         {props.children}
           </VFooterView>
 }

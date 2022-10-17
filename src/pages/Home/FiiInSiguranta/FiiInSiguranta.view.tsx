@@ -1,7 +1,12 @@
 import { FirebaseError } from "firebase/app";
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useContext } from "react";
 import {fiiInSiguranta} from "../../../models/fiiInSiguranta.model";
 import * as Styled from "./FiiInSiguranta.model";
+import {LinkCOmponent} from "../../../components/VLink/VLink";
+import {theme, rootColor, displayFlex} from "../../../components/styles/Theme";
+import {NavbarContext} from "../../../context/Context.navbar";
+import {NavbarContextModel} from "../../../models/NavbarContext.model";
+
 
 type Props = {
     data: fiiInSiguranta;
@@ -13,7 +18,11 @@ type Props = {
 export const FiiInSigurantaView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
+    const {data} = useContext(NavbarContext) as NavbarContextModel;
+
     return (
+
+        <>
 
         <Styled.FiiinSiguranta>
             <h1>{props.data.title}</h1>
@@ -30,5 +39,43 @@ export const FiiInSigurantaView: React.FC<PropsWithChildren<Props>> = (props: Pr
 
             <p className="descrition_button">{props.data.description_bottom_img}</p>
         </Styled.FiiinSiguranta>
+
+
+
+
+      <Styled.DesktopElement>
+
+        <Styled.RightElement>
+            <img src={props.data.img_stanga} alt="" />
+            <p>{props.data.description_bottom_img}</p>
+        </Styled.RightElement>
+
+
+        <Styled.TitleDesc>
+            <h1>{props.data.title}</h1>
+            <p>{props.data.description_bottom_title}</p>
+            <LinkCOmponent bg={rootColor.primary} link={`${data.contacte}`}>Contacteaza-ne</LinkCOmponent>
+        </Styled.TitleDesc>
+
+
+        <Styled.RightImg>
+            <div className="img">
+                <img src={props.data.img_dreapta} alt="" />
+
+                <Styled.BoxElement>
+                    <p>{props.data.box_yellow}</p>
+                </Styled.BoxElement>
+                
+            </div>
+           
+        </Styled.RightImg>
+
+
+      </Styled.DesktopElement>
+
+        </>
+
+
+
     )
 }

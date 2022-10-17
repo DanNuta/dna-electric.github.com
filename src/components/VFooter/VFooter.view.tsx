@@ -9,6 +9,7 @@ import facebook from "../../icons/social_media_icon/facebook.svg";
 import youtube from "../../icons/social_media_icon/youtube.svg";
 import arrow_up from "../../icons/arrow_icon/arrow_up.svg";
 import {Link} from "react-router-dom";
+import { Container } from "@mui/material";
 
 type Props = {
     data: NavbarType
@@ -18,29 +19,31 @@ export const VFooterView: React.FC<PropsWithChildren<Props>> = (props: PropsWith
 
     const dataYar: number= new Date().getFullYear();
 
-    const scrollTop = () =>{
-           window.scroll({
-            top: 0, 
-            left: 0, 
-            behavior: 'smooth'
-          });
-    }
 
     return (
 
 
         <>
 
-        <Style.FooterDiv>
+
+
+    <Style.DesktopBg>
+
+
+        <Style.ContainerStyle>
+
+            
+
+               
 
 
             <Style.LogoProgramDiv>
 
-                <Link onClick={scrollTop} className="logo" to="/"><img src={Logo} alt="" /></Link>
+                <Link className="logo" to="/"><img src={Logo} alt="" /></Link>
 
                 <ul>
                     <li>Program: 9:00 - 19:00</li>
-                    <li><img src={telefon} alt="telefon" />{props.data.Nr_telefon}</li>
+                    <li><img src={telefon} alt="telefon"/><a href={`tel: ${props.data.Nr_telefon}`}>{props.data.Nr_telefon}</a></li>
                     <li><img src={adress} alt="adresa" />{props.data.adresa}</li>
                     <li><img src={mail} alt="email" />{props.data.email}</li>
                 </ul>
@@ -51,12 +54,10 @@ export const VFooterView: React.FC<PropsWithChildren<Props>> = (props: PropsWith
 
                 <nav>
                     <ul className="links">
-                        <li><Link onClick={scrollTop} to="/">{props.data.Despre}</Link></li>
-
-
-                        <li><Link onClick={scrollTop} to={props.data.impamantare}>{props.data.impamantare}</Link></li>
-                        <li><Link onClick={scrollTop} to={props.data.paratrasnet}>{props.data.paratrasnet}</Link></li>
-                        <li><Link onClick={scrollTop} to={props.data.supratensiune}>{props.data.supratensiune}</Link></li>
+                        <li><Link  to="/">{props.data.Despre}</Link></li>
+                        <li><Link  to={props.data.impamantare}>{props.data.impamantare}</Link></li>
+                        <li><Link  to={props.data.paratrasnet}>{props.data.paratrasnet}</Link></li>
+                        <li><Link  to={props.data.supratensiune}>{props.data.supratensiune}</Link></li>
                     </ul>
 
 
@@ -73,16 +74,18 @@ export const VFooterView: React.FC<PropsWithChildren<Props>> = (props: PropsWith
             </Style.MapsDiv>
 
 
-            <div className="arrow_up">
+            <div onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' });}} className="arrow_up">
                  <img src={arrow_up} alt="" />
             </div>
 
+           
 
             
-        </Style.FooterDiv>
+        </Style.ContainerStyle>
 
             <Style.FooterParaghraph>© DNA Electric {dataYar}. All rights reserved</Style.FooterParaghraph>
 
+            </Style.DesktopBg>
         </>
     )
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {theme, rootColor} from "../../../components/styles/Theme";
 
 
 
@@ -8,13 +9,50 @@ export const ProduseSimilareDiv = styled.div`
 background: #F8F8F8;
 box-shadow: -2px 2px 12px 2px rgba(0,0,0,0.1);
 
+    
+  .hoverElement{
+    display: none;
+    transition: .5s ease;
+  }
+
+  ${theme.breakpoints.up("lg")}{
+    position: relative;
+
+    &:hover .hoverElement {
+        
+        position: absolute;
+        background-color: ${rootColor.secondary};
+        color: white;
+        width: 100%;
+        bottom: 0%;
+        transition: all .5s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        gap: 20px;
+    }
+  }
 .img{
     display: flex;
     justify-content: center;
     height: 115px;
+
+    ${theme.breakpoints.up("lg")}{
+        height: 340px;
+        
+        
+    }
     img{
         
         height: 100%;
+
+        ${theme.breakpoints.up("lg")}{
+          
+          object-fit: cover;
+          max-width: 340px;
+        }
+
     }
 }
 
@@ -23,9 +61,12 @@ box-shadow: -2px 2px 12px 2px rgba(0,0,0,0.1);
     padding: 8px;
     height: 70px;
 
-    .hover{
-        display: none;
+    ${theme.breakpoints.up("lg")}{
+        height: 110px;
+        padding: 20px;
     }
+
+    
 }
 
 

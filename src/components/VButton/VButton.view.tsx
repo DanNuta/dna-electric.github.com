@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from "react";
 import * as Styled from "./VButton.model";
 
 type Props = {
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   style?: string;
   padding?: string,
   color?: string,

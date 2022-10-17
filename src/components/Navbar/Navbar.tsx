@@ -20,7 +20,7 @@ export const Navbar: React.FC<PropsWithChildren<Props>> = (props: PropsWithChild
   const [toggleState, setToggleState] = useState<boolean>(false);
   const [wishlistToggle, setWishList] = useState<boolean>(false);
 
-  const NavbarEle = useContext(NavbarContext) as NavbarType;
+  const NavbarEle = useContext(NavbarContext);
 
 
 
@@ -42,7 +42,7 @@ export const Navbar: React.FC<PropsWithChildren<Props>> = (props: PropsWithChild
       toggle={checkToggleFn}
       onClick={wishlist}
       wishlist={wishlistToggle}
-      data={NavbarEle}
+      
     >
       {props.children}
     </NavbarView>

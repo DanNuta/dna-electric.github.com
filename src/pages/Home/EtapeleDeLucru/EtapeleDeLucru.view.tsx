@@ -4,6 +4,8 @@ import * as Style from "./EtapeleDeLucru.module";
 import { LinkCOmponent } from "../../../components/VLink/VLink";
 import {NavbarContext} from "../../../context/Context.navbar";
 import {NavbarType} from "../../../models/navbar.model";
+import {NavbarContextModel} from "../../../models/NavbarContext.model";
+
 
 type Props = {
     data: EtapeleDeLucruModel[];
@@ -12,7 +14,7 @@ type Props = {
 export const EtapeleDeLucruView:React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    const contextNavbar = useContext(NavbarContext) as NavbarType;
+    const {data} = useContext(NavbarContext) as NavbarContextModel;
     return (
         <Style.EtapeleDeLucruDiv>
             <h1 className="title">Etapele de lucru</h1>
@@ -20,11 +22,11 @@ export const EtapeleDeLucruView:React.FC<PropsWithChildren<Props>> = (props: Pro
 
             {props.data && props.data.map((item, index) => (
                 <Style.EtapeleLucruItemDiv key={index}>
-                     <div className="title">
+                     <div className="title_img">
                         <h1>{index +1}</h1>
                         <h1>{item.title}</h1>
-
                      </div>
+
                      <div className="img">
                         <img src={item.img} alt="" />
                      </div>
@@ -32,11 +34,7 @@ export const EtapeleDeLucruView:React.FC<PropsWithChildren<Props>> = (props: Pro
             ))}
 
 
-          <LinkCOmponent onClick={() => {window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      });}} bg="#272727" color="white" link={contextNavbar?.contacte}>Contacteaza-ne</LinkCOmponent>
+          <LinkCOmponent bg="#272727" color="white" link={data.contacte}>Contacteaza-ne</LinkCOmponent>
         </Style.EtapeleDeLucruDiv>
     )
 }

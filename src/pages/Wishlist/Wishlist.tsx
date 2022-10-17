@@ -20,7 +20,10 @@ export const WishlistEl: React.FC<PropsWithChildren<Props>> = (props: PropsWithC
 
    
    
-    return <WishlistView wishListToggle={props.wishListToggle} wishlist={props.onClick} onClick={deleteAll}>
+    return <WishlistView 
+                          wishListToggle={props.wishListToggle} 
+                          wishlist={props.onClick} 
+                          onClick={deleteAll}>
         {props.children}
     </WishlistView>
 }

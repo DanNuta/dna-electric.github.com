@@ -7,7 +7,8 @@ type Props = {
     label: string,
     type: string,
     placeholder: string,
-    onChange: (e: React.FormEvent<HTMLInputElement>) => void,
+    onChange?: (e: React.FormEvent<HTMLInputElement>) => void,
+    onChangeArea?: (e: React.FormEvent<HTMLTextAreaElement>) => void,
     nameState: StateFormModel,
   
 }
@@ -19,6 +20,7 @@ export const VImput: React.FC<PropsWithChildren<Props>> = (props: PropsWithChild
                        placeholder={props.placeholder} 
                        onChange={props.onChange} 
                        label={props.label}
+                       onChangeArea={props.onChangeArea}
                        nameState={props.nameState} >
              {props.children}
          </VImputView>

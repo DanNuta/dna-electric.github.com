@@ -1,4 +1,4 @@
-import React, {ChangeEvent, PropsWithChildren, useState} from "react";
+import React, {ChangeEvent, FormEventHandler, PropsWithChildren, useState} from "react";
 import { ContactViwe } from "./Contact.view";
 import {StateFormModel} from "../../models/stateForm.model";
 import { useNavigate} from "react-router-dom";
@@ -95,7 +95,7 @@ export const Contact: React.FC<PropsWithChildren> = (props: PropsWithChildren) =
 
 
     
-    const inputMsjHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    const inputMsjHandler = (e: React.FormEvent<HTMLTextAreaElement>) => {
         const newValue = e.currentTarget.value;
 
         setInputMsjState((prev) => {
@@ -113,8 +113,13 @@ export const Contact: React.FC<PropsWithChildren> = (props: PropsWithChildren) =
     }
 
 
-    const contact = async  (e: React.FormEvent, form: HTMLFormElement) =>{
-        e.preventDefault()
+    const contact = async  (e: any, form: any) =>{
+        e.preventDefault();
+
+        console.log("salur")
+
+      
+       
 
         if(inputNumeState.value === ""){
 
@@ -214,16 +219,17 @@ export const Contact: React.FC<PropsWithChildren> = (props: PropsWithChildren) =
 
             return obj
         })
-
-
         setInputMsjState(prev => {
-            const obj = {
-                msj: prev.msj,
-                value: prev.value = "",
-                css: prev.css = "transparent"
-            }
-            return obj
-        })
+         const obj = {
+             msj: prev.msj,
+             value: prev.value = "",
+             css: prev.css = "transparent"
+         }
+         return obj
+     })
+
+
+       
 
 
 
@@ -236,7 +242,7 @@ export const Contact: React.FC<PropsWithChildren> = (props: PropsWithChildren) =
        }catch(error: any){
         setErrorState(error)
        }
-       navigate("/")
+            navigate("/")
     }
       
 

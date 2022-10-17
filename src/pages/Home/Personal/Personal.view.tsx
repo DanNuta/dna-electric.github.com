@@ -23,11 +23,15 @@ export const PersonalView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
     const contextNavbar = useContext(NavbarContext);
 
     return (
-        <Style.ElementDiv margin="45px">
+        
 
-            <Style.ElementDiv>
+            <Style.ElementPersonal>
 
-            </Style.ElementDiv>
+                <div className="img_element">
+                    <img src={props.contact.img} alt="" />
+                </div>
+
+           
 
 
             <Style.PersonalDiv>
@@ -35,10 +39,11 @@ export const PersonalView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
                     return <VPersonal key={i} data={item} />
                 })}
 
-
-                <LinkCOmponent color="white" bg="#272727" link={`${contextNavbar?.contacte}`}>Contacteaza-ne</LinkCOmponent>
+                <LinkCOmponent  color="white" bg="#272727" link={`${contextNavbar?.data.contacte}`}>Contacteaza-ne</LinkCOmponent>
             </Style.PersonalDiv>
 
-        </Style.ElementDiv>
+            </Style.ElementPersonal>
+
+        
     )
 }

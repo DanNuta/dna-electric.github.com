@@ -8,15 +8,20 @@ import {ParatrasnetPda} from "./ParatrasnetPda/ParatrasnetPda";
 import {Personal} from "../Home/Personal/Personal";
 import {EtapeleDeLucru} from "../Home/EtapeleDeLucru/EtapeleDeLucru";
 import { Contact } from "../Contact/Contact";
+import { Container } from "@mui/system";
+import {useLocation} from "react-router-dom";
 
 
 
 export const HomeView: React.FC = () =>{
 
-    
+
+    const location = useLocation();
 
 
     return (
+
+        <Container maxWidth="xl">
         <Style.HomeDiv>
             <Home/>
 
@@ -42,5 +47,7 @@ export const HomeView: React.FC = () =>{
 
             
         </Style.HomeDiv>
+
+        </Container>
     )
 }

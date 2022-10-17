@@ -1,7 +1,17 @@
 import styled, { StyleSheetManager } from "styled-components";
+import {theme} from "../../../components/styles/Theme";
 
 
+
+type Props = {
+    display?: string
+}
 export const DivElement = styled.div`
+
+
+${theme.breakpoints.up("lg")}{
+    
+}
 
 .title{
     margin: 45px 0 35px 0;
@@ -17,15 +27,27 @@ export const DivElement = styled.div`
 
 export const FlexElementDiv = styled.div`
 
+${theme.breakpoints.up("lg")}{
+    display: flex;
+    gap: 120px;
+    
+    
+}
+
 .desc_title{
     margin-bottom: 20px;
 
 }
 
-`
+`;
 
 
-export const OverlayImg = styled.div`
+export const OverlayImg = styled.div<Props>`
+
+display: ${props => props.display};
+${theme.breakpoints.up("lg")}{
+    display: ${props => props.display};
+}
 
 
 

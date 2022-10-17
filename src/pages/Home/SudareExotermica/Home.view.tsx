@@ -8,6 +8,9 @@ import { LinkCOmponent } from "../../../components/VLink/VLink";
 import {VLoaderView} from "../../../components/VLoader/VLoader";
 import { VCardSudare } from "../../../components/VCardSudare/VCardSudare";
 import { NavbarType } from "../../../models/navbar.model";
+import { Grid } from "@mui/material";
+import {ProductsProvider} from "../../../context/Context.products";
+import {NavbarContextModel} from "../../../models/NavbarContext.model";
 
 
 
@@ -21,7 +24,8 @@ type Props = {
 export const HomeView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
-    const contextNavbar = useContext(NavbarContext) as NavbarType;
+    const {data} = useContext(NavbarContext) as NavbarContextModel;
+    const impamantare = useContext(ProductsProvider);
     
     return (
 
@@ -38,11 +42,13 @@ export const HomeView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChi
                         <LinkCOmponent 
                                     bg="#FFD600" 
                                     color="#272727" 
-                                    link={contextNavbar.contacte}
+                                    link={`${data.contacte}`}
+                                    width="300px"
                                     >Contacteaza-ne
                     </LinkCOmponent> 
 
-                    <VCardSudare /> 
+
+
                     
                 </Style.HeadersDivText>
 
@@ -51,15 +57,21 @@ export const HomeView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChi
                     <LinkCOmponent 
                                     bg="#FFD600" 
                                     color="#272727" 
-                                    link={contextNavbar?.contacte}
+                                    link={`${data.contacte}`}
                                     >Contacteaza-ne
                     </LinkCOmponent>
                 </Style.HeaderDivImg>
 
+                  <Style.VCardItemSudare>
+                    <VCardSudare link={`${data.impamantare}`}/>
+                  </Style.VCardItemSudare>
 
                 </Style.SudareExotermica>
           
           }
+
+
+          
         </>
 
     )

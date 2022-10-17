@@ -18,11 +18,27 @@ export const ParatrasnetPdaView:React.FC<PropsWithChildren<Props>> = (props: Pro
             <h1 className="title">{props.data.title}</h1>
 
 
-     <Style.FlexElementDiv>
+<Style.FlexElementDiv>
+
+      <Style.OverlayImg display="block">
+
+         <div className="img_element">
+            <img src={props.data.img} alt="" />
+
+         <div className="yollow"></div>
+         </div>
+
+
+          </Style.OverlayImg>
+
+     <div>
+
+
         <p className="desc_title">{props.data.description_title}</p>
 
 
-        <Style.OverlayImg>
+
+        <Style.OverlayImg display="none">
 
            <div className="img_element">
               <img src={props.data.img} alt="" />
@@ -32,15 +48,16 @@ export const ParatrasnetPdaView:React.FC<PropsWithChildren<Props>> = (props: Pro
 
 
         </Style.OverlayImg>
-
-
-
-     </Style.FlexElementDiv>
-
-     <Style.FlexElementDiv>
-        <h1 className="img_desc">{props.data.img_descrition_title}</h1>
+     <div>
+        <h2 className="img_desc">{props.data.img_descrition_title}</h2>
         <p>{props.data.img_descrition}</p>
+     </div>
+
+     </div>
+
+
      </Style.FlexElementDiv>
+
 
         </Style.DivElement>
     )

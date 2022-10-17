@@ -32,9 +32,12 @@ width: 90%;
 margin: 45px  auto 0 auto;
 
 
+
+
 ${theme.breakpoints.up("md")}{
   display: flex;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .title{
@@ -60,8 +63,11 @@ export const ImgSlider = styled.div`
     position: relative;
 
     ${theme.breakpoints.up("md")}{
-       
         width: 50%;
+        height: 500px;
+        margin: 0;
+        
+       
         
       
 }
@@ -70,8 +76,12 @@ export const ImgSlider = styled.div`
         position: absolute;
         height: 100%;
 
+
         ${theme.breakpoints.up("md")}{
-       position: relative;
+          position: relative;
+          height: 100%; 
+         
+         
 }
     }
 
@@ -116,6 +126,12 @@ ${theme.breakpoints.up("md")}{
 
 export const DescriereDiv = styled.div`
 
+.hr_element{
+    ${theme.breakpoints.up("lg")}{
+        margin: 30px 0;
+    }
+}
+
 .title{
     display: none;
 
@@ -144,7 +160,24 @@ export const ContactShoWishlistDiv = styled.div`
 
     ul{
 
+        .shop_class{
+            ${theme.breakpoints.up("lg")}{
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                font-weight: lighter;
+
+            }
+        }
+
+        
         ${FlexFn({display: "flex", justifyContent: "space-between"})}
+
+
+        ${theme.breakpoints.up("lg")}{
+            justify-content: flex-start;
+            gap: 50px;
+        }
 
         margin-top: 20px;
         li{
@@ -166,6 +199,10 @@ export const ProduseSimilareDiv = styled.div`
 width: 90%;
 margin: 45px  auto ;
 
+${theme.breakpoints.up("lg")}{
+    margin-top: 115px;
+    width: 100%;
+}
 
 .title{
     margin-bottom: 30px;

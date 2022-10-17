@@ -7,9 +7,10 @@ type Props = {
     link: string,
     bg?: string,
     color?: string,
-    onClick?: () => void
+    onClick?: () => void,
+    width?: string
 }
 export const LinkView: React.FC<PropsWithChildren<Props>>= (props: PropsWithChildren<Props>) =>{
 
-    return <Style.LinkElement onClick={props.onClick} color={props.color} bg={props.bg} to={props.link}>{props.children}</Style.LinkElement>
+    return <Style.LinkElement width={props.width} onClick={props.onClick} color={props.color} bg={props.bg} to={props.link}>{props.children}</Style.LinkElement>
 }

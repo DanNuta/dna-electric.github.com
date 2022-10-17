@@ -37,10 +37,12 @@ export const VCardItemView: React.FC<PropsWithChildren<Props>> = (props: PropsWi
 
         <div className="title_shop">
 
-                    <h1 className="title">{props.data.title}</h1>
+                    <h1 className="title">{props.data.title.substring(0, 55)}</h1>
 
                     <div className="action_btn">
-                        <span><img src={shop} alt="shop" /></span>
+                         {/* <li><a href="https://www.paratrasnet.shop" target="_blank"><img src={shop} alt="shop" />Adauga in cos</a></li> */}
+                         {/* <img src={shop} alt="shop" /> */}
+                        <span><a href="https://www.paratrasnet.shop" target="_blank"><img src={shop} alt="shop" /></a></span>
                         <span onClick={() => props.onClick?.(props.data)}><img src={checkItExist ? wishlist : wishlistHover } alt="wishlist" /></span>
                     </div>
 

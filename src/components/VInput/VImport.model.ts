@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-
+import {theme} from "../../components/styles/Theme";
 
 
 // global style
@@ -66,4 +66,9 @@ export const TextareaTag = styled.textarea<Props>`
     ${heightElement({height: "150px"})};
     margin-bottom: 1.5rem;
     border: 1px solid ${props => props.css};
+
+    ${theme.breakpoints.up("lg")}{
+      margin-top: 0.4rem;
+      height: 248px;
+    }
 `;

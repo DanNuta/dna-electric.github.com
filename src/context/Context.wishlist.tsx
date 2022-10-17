@@ -47,7 +47,13 @@ export const WislistContext: React.FC<PropsWithChildren> = (props: PropsWithChil
   })
   }
 
-    return <WishlistContext.Provider value={{wishlistState, addWishList, deleteItem, deleteAll}}>
+    return <WishlistContext.Provider 
+                                     value={{
+                                             wishlistState, 
+                                             addWishList, 
+                                             deleteItem, 
+                                             deleteAll
+                                             }}>
               {props.children}
           </WishlistContext.Provider>
 }

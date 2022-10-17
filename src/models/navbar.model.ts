@@ -14,5 +14,6 @@ export type NavbarType = {
     contacte: string,
     email: string,
     adresa: string,
-    map: string
+    map: string,
+    
 }

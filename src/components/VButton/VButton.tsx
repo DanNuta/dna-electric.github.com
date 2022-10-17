@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { VButtonView } from "./VButton.view";
 
 type Props = {
-  onClick?: () => void;
+  
   bg?: string;
   padding?: string,
-  color?: string
+  color?: string,
+  onClick?: (e: any) => void
   
 };
 

@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { ProductsProvider } from "../../context/Context.products";
 import { device } from "../styles/Breackpoints";
 import {theme} from "../styles/Theme";
+import { Container } from "@mui/material";
 
 
 type Props = {
@@ -14,7 +16,8 @@ type Props = {
     justifyContent?: string,
     flexDirection?: string,
     center?: string,
-    gap?: string
+    gap?: string,
+    width?: string
 }
 
 
@@ -89,32 +92,61 @@ ${theme.breakpoints.up("lg")}{
 
 
 
-export const TabletNav = styled.nav<Props>`
+export const TabletNav = styled.div<Props>`
 
 
 display: none;
+position: relative;
+z-index: 2;
 
 
 ${theme.breakpoints.up("lg")}{
-  padding:0 1rem;
-  background-color: ${props => props.bg};
-  ${displayFlex({display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem"})};
-  height: 110px;
-  
+   
+   width: 100%;
+   background-color: ${props => props.bg};
+   height: 110px;
+   display: flex;
+   /* ${displayFlex({display: "flex",
+                  justifyContent: "center",
+                   alignItems: "center", 
+                   gap: "1rem"})};
+ */
+
+} 
+`;
+
+
+
+
+export const MaxWidthTablet = styled(Container)`
+   display: none;
+
+${theme.breakpoints.up("lg")}{
+
+  ${displayFlex({display: "flex !important ",
+                 justifyContent: "space-between !important",
+                 alignItems: "center !important",
+                 gap: "1rem !important"})};
+
+  max-width: 1536px !important;
+  width: 100% !important;
 }
 `;
 
 
 
 
-
 export const TabletUl = styled.ul<Props>`
 
-${displayFlex({display: "flex", alignItems: "center"})};
-gap: ${props => props.gap};
+${displayFlex({display: "flex", alignItems: "center", justifyContent: "space-between"})};
+  gap: ${props => props.gap};
+ 
+  width: ${props => props.width &&  "45%"};
+
 
 li{
   color: white;
+  cursor: pointer;
   
   a{
     color: white;

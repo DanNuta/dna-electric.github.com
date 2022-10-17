@@ -12,7 +12,7 @@ export const VPersonalView: React.FC<PropsWithChildren<Props>> = (props: PropsWi
     return (
         <Style.PersonalDiv>
             <img src={props.data.img} alt="" />
-            <h1>{props.data.title}</h1>
+            <h2 className="h1">{props.data.title}</h2>
             <p>{props.data.description}</p>
         </Style.PersonalDiv>
     )

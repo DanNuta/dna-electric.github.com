@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {theme} from "../../components/styles/Theme";
 
 
 type Props = {
@@ -17,6 +18,12 @@ z-index: 3;
 transform: ${props => props.active ? "translateY(0%)" : "translateY(-200%)"};
 transition: .3s ease;
 
+${theme.breakpoints.up("lg")}{
+  width: 30%;
+  right: 0;
+  z-index: 1;
+}
+
 
 
 .item_wishlist{
@@ -31,6 +38,7 @@ transition: .3s ease;
 .btn_delete_wishlist{
     display: flex;
     justify-content: space-between;
+    align-items: center;
    
 }
 

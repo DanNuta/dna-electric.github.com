@@ -22,8 +22,6 @@ import { VLoaderView } from "../../components/VLoader/VLoader";
 
 
 
-
-
 type Props = {
     data: dataProductModel,
     isPending: boolean | null,
@@ -33,15 +31,16 @@ type Props = {
     wishlist: (e: dataProductModel) => void,
     products?: dataProductModel[],
     link?: string,
-
 }
+
+
 export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWithChildren<Props>) =>{
 
 
     
       
     const {wishlistState} = useContext(WishlistContext) as Wishlist;
-    const contextNavbar = useContext(NavbarContext) as NavbarType;
+    const contextNavbar = useContext(NavbarContext);
 
     const navigate = useNavigate();
     const params = useParams();
@@ -57,10 +56,10 @@ export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
     
     
 
-    return <div>
+    return <Container maxWidth="xl">
 
 
-<Container>
+
 
 
           {props.isPending ? <VLoaderView/> :
@@ -85,23 +84,25 @@ export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
 
                 <Style.DescriereDiv>
                     <h1 className="title">{props.data?.title}</h1>
-                    <h3>Descriere</h3>
+                    <hr className="hr_element" />
+                    <h2>Descriere</h2>
                     <p>{props.data?.description?.[0]}</p>
-                    <hr />
+                    <hr className="hr_element"  />
                 </Style.DescriereDiv>
 
 
                 <Style.ContactShoWishlistDiv>
 
                     <LinkCOmponent 
-                                    link={`${path}/${contextNavbar?.contacte}`} 
+                                    link={`${path}/${contextNavbar?.data.contacte}`} 
                                     color="rgba(39, 39, 39, 1)" 
                                     bg="rgba(255, 214, 0, 1)">
                                 Contacteaza-ne
                         </LinkCOmponent>
 
                     <ul>
-                        <li><img src={shop} alt="shop"/>Adauga in cos</li>
+                         <li><a className="shop_class" href="https://www.paratrasnet.shop" target="_blank"><img src={shop} alt="shop" />Adauga in cos</a></li>
+                        {/* <li><img src={shop} alt="shop"/>Adauga in cos</li> */}
                         <li onClick={() => props.wishlist(props.data)}><img src={checkItExist ? wishlist : wishlistHover} alt="wishlist" />Adauga in la favorite</li>
                     </ul>
 
@@ -128,7 +129,7 @@ export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
             </Grid>
           </Style.ProduseSimilareDiv>
 
-          </Container>
+          
 
 
 
@@ -139,7 +140,7 @@ export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
 
 
 
-<Container>
+
           <Grid  container spacing={3}>
 
             <Grid md={4} xs={12}item>
@@ -170,10 +171,10 @@ export const ProductsView: React.FC<PropsWithChildren<Props>> = (props: PropsWit
 
           </Grid>
 
-          </Container>
+        
 
 
 
 
-    </div>
+    </Container>
 }

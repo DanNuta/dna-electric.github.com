@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {theme} from "../../components/styles/Theme";
 
 
 export const VCardItemDiv = styled.div`
@@ -13,11 +14,23 @@ export const VCardItemDiv = styled.div`
         display: flex;
         justify-content: center;
 
+        ${theme.breakpoints.up("lg")}{
+            height: 340px;
+            width: 340px;
+        }
+
 
         img{
-            
-            height: 100%;
             object-fit: cover;
+
+            ${theme.breakpoints.up("lg")}{
+                //width: 340px;
+               
+                //width: 100%;
+                max-width: 340px;
+                height: 100%;
+                object-fit: cover;
+            }
         }
     }
 
@@ -31,6 +44,12 @@ export const VCardItemDiv = styled.div`
        .title{
            font-size: 12px;
            margin: 5px 0 10px 0;
+
+           ${theme.breakpoints.up("lg")}{
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+           }
        }
     
     

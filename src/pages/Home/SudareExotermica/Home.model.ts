@@ -35,6 +35,8 @@ export const SudareExotermica = styled.div`
 ${theme.breakpoints.up("lg")}{
    ${displayFlex({display: "flex", gap: "3rem"})}
    
+   position: relative;
+   
 }
 
 `;
@@ -105,5 +107,14 @@ a{
     }
 
 }
-   
 `
+
+
+
+export const VCardItemSudare = styled.div`
+${displayFlex({display: "flex", gap: "2.5rem"})};
+position: absolute;
+bottom: -20%;
+
+
+`;

@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, PropsWithChildren } from "react";
 import {NavbarType} from "../models/navbar.model";
+import {NavbarContextModel} from "../models/NavbarContext.model";
 
 
 import { collection, FirestoreError, onSnapshot } from "firebase/firestore";
@@ -8,10 +9,12 @@ import { db } from "../firebase/config";
 
 
 
-export const NavbarContext = createContext<NavbarType | null>(null);
+export const NavbarContext = createContext<NavbarContextModel | null>(null);
 
 
 export const NavbarProvider: React.FC<PropsWithChildren> = (props: PropsWithChildren) =>{
+
+  const [isPending, setIsPending] = useState<boolean>(false)
 
     const [data, setData] = useState<NavbarType>({
       Despre: "",
@@ -32,6 +35,7 @@ export const NavbarProvider: React.FC<PropsWithChildren> = (props: PropsWithChil
 
 
     useEffect(() => {
+     setIsPending(true)
         const ref = collection(db, "Navbar");
     
         const onSubscribe = onSnapshot(ref, (snapshopt) => {
@@ -56,6 +60,8 @@ export const NavbarProvider: React.FC<PropsWithChildren> = (props: PropsWithChil
               map: item.data().map
              });
 
+             setIsPending(false)
+
           });
         });
     
@@ -65,7 +71,7 @@ export const NavbarProvider: React.FC<PropsWithChildren> = (props: PropsWithChil
       }, []);
 
     return  (
-            <NavbarContext.Provider value={data}>
+            <NavbarContext.Provider value={{data, isPending}}>
                 {props.children}
             </NavbarContext.Provider>
 

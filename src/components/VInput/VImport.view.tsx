@@ -8,7 +8,8 @@ type Props = {
     label: string,
     type: string,
     placeholder: string,
-    onChange:  (e: React.FormEvent<HTMLInputElement>) => void,
+    onChange?:  (e: React.FormEvent<HTMLInputElement>) => void,
+    onChangeArea?: (e: React.FormEvent<HTMLTextAreaElement>) => void,
     nameState: StateFormModel
 }
 
@@ -33,7 +34,7 @@ export const VImputView: React.FC<PropsWithChildren<Props>> = (props: PropsWithC
                                                       <Style.TextareaTag css={props.nameState.css}
                                                                          value={props.nameState.value} 
                                                                          placeholder={props.placeholder} 
-                                                                        //  onChange={props.onChange}
+                                                                         onChange={props.onChangeArea}
                                                                         >
                                                                             
                                                     </Style.TextareaTag>}
