@@ -10,18 +10,25 @@ import {EtapeleDeLucru} from "../Home/EtapeleDeLucru/EtapeleDeLucru";
 import { Contact } from "../Contact/Contact";
 import { Container } from "@mui/system";
 import {useLocation} from "react-router-dom";
+import {VCookieView} from "../../components/VCookie/VCookie.view";
+
+
+
 
 
 
 export const HomeView: React.FC = () =>{
 
 
-    const location = useLocation();
-
+  
 
     return (
 
         <Container maxWidth="xl">
+
+           <VCookieView></VCookieView>
+
+          
         <Style.HomeDiv>
             <Home/>
 

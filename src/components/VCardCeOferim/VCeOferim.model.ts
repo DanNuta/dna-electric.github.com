@@ -56,7 +56,7 @@ export const CeOferim = styled.div<Props>`
 backdrop-filter: blur(13.5px);
 background: rgba(39, 39, 39, 0.64);
 width: 100%;
-height: 1000px;
+height: 100vh;
 position: absolute;
 top: ${props => props.scroll+"px"};
 

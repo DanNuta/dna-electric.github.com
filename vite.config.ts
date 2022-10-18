@@ -5,7 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [splitVendorChunkPlugin()],
   server: {
-    host: true
+    host: true,
+    port: 1000
   },
 
   build: {

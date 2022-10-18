@@ -15,7 +15,7 @@ export const CeOferim:React.FC<PropsWithChildren<Props>> = (props: PropsWithChil
     const changeState  = () =>{
         setActivateCeOferimState(prev => !prev);
 
-        console.log("salut")
+       
     }
 
     return <VCeOferimView state={activateCeOferimState} onClick={changeState} item={props.item}>
